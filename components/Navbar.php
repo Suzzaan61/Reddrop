@@ -26,21 +26,21 @@
                     <a href="#" class="button-signup"><button>Create an account</button></a>
                 </div>
                 <div class="profile-img"></div>
-                <div class="dropdown" onclick="dropDownHandler()" >
-                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                <div class="dropdown" onclick="dropDownHandler()">
+                    <i class="fa-sharp fa-solid fa-caret-up" id="drop-icon"></i>
                 </div>
                 <div class="drop-profile" id="my-dropdown" hidden>
                     <ul>
                         <a href="">
-                        
+
                             <li><i class="fa-duotone fa-gauge"></i> Dashboard</li>
                         </a>
                         <a href="">
-                        
+
                             <li><i class="fa-duotone fa-gear"></i> Setting</li>
                         </a>
                         <a href="">
-                           
+
                             <li> <i class="fa-duotone fa-arrow-right-from-bracket"></i> Logout</li>
                         </a>
                     </ul>
@@ -49,7 +49,7 @@
         </nav>
     </div>
 
-<script src="../components/Navbar.js"></script>
+    <script src="../components/Navbar.js"></script>
 </body>
 
 </html>

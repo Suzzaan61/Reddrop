@@ -47,7 +47,7 @@
 
 .slogan {
     width: 100%;
-    height: 400px;
+    height: 500px;
     background: url(../assets/slogan-top.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -88,7 +88,7 @@
 .slogan .gradient {
     padding: 20px 0;
     width: 100%;
-    height: 400px;
+    height: 500px;
     background: linear-gradient(90deg, rgba(181, 46, 50, 1) 0%, rgba(185, 18, 22, 0.3321661428243172) 35%, rgba(0, 212, 255, 1) 100%);
     flex-direction: column;
     gap: 10px;

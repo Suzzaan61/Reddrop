@@ -14,6 +14,19 @@ nav {
     justify-content: space-between;
     flex-wrap: wrap;
     position: relative;
+    position: fixed;
+    width: 100%;
+    z-index: 11;
+    left: 0;
+    padding: 5px 50px;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.23);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .logo img {
@@ -42,12 +55,12 @@ nav {
     /* display: none; */
 }
 
-.dropdown{
+.dropdown {
     cursor: pointer;
 }
 
 .main {
-    padding: 10px 50px;
+    padding: 0 50px;
 
 }
 
@@ -98,12 +111,24 @@ div.register a {
     position: absolute;
     z-index: 99;
     width: 200px;
-    height: 150px;
-    background-color: #B91216;
+    height: 180px;
+    border-radius: 10px;
     color: #fff;
-    top: 9vh;
-    right: -5px;
-    
+    top: 70px;
+    right: 40px;
+    padding: 20px;
+
+    transition: all 0.5s ease-in-out allow-discrete;
+
+
+    /* From https://css.glass */
+    background: rgba(255, 35, 35, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
 }
 
 .drop-profile ul {
@@ -114,11 +139,12 @@ div.register a {
     text-decoration: none;
     color: black;
 }
-.drop-profile ul a:hover{
-    color: #fff;
+
+.drop-profile ul a:hover {
+    color: #B91216;
 }
 
 .drop-profile ul li {
     font-size: 20px;
-    margin: 20px 0;
+    margin: 0 0 20px 0;
 }
