@@ -23,30 +23,31 @@ require "../components/Navbar.php"
             <div class="arrow"><i class="fa-duotone fa-arrow-down first"></i><i class="fa-duotone fa-computer-mouse-scrollwheel second"></i></div>
         </div>
     </div>
-    <div class="hero flex-item-center">
-        <div class="action-cards flex-item-center">
-            <div class="donate cards">
-                <i class="fa-duotone fa-droplet"></i>
-                <button class="button-main">Donate</button>
+
+    <div class="about-us flex-item-between">
+        <div class="left">
+            <div class="title">
+                <h1 class=" main-title">Who we are?
+                </h1>
             </div>
-            <div class="request cards">
-                <i class="fa-duotone fa-truck-droplet"></i>
-                <button class="button-main">Request</button>
-            </div>
-            <div class="compatibality-table cards">
-                <i class="fa-duotone fa-table"></i>
-                <button class="button-main">Compatibality</button>
-            </div>
-            <div class="records cards">
-                <i class="fa-duotone fa-books"></i>
-                <button class="button-main">Records</button>
-            </div>
-            <div class="events cards">
-                <i class="fa-duotone fa-calendar-days"></i>
-                <button class="button-main">Events</button>
-            </div>
+            <div class="post">The &quot;Red Drop&quot; project aims to develop a comprehensive Blood Donor Management System to
+                streamline and enhance blood donation processes. This system, designed to facilitate the
+                interaction between blood donors, blood banks, and healthcare institutions, will employ an
+                incremental development model. This approach allows for the systematic delivery of key
+                features, ensuring a responsive and evolving platform. Redrop is a web-based system that can
+                assist in the information of blood donors, blood donation events &amp; campaigns, etc. If anyone
+                wants to become a regular blood donor, they can create an account and book a blood donation
+                appointment and donate blood. Also, if anyone needs blood, they can fill out the request form
+                and submit it to get help from Redrop. From this system, several types of reports can be
+                generated, such as blood stock reports, total numbers of donor reports, and the total number of
+                blood donations according to months and years. The system can also provide information to the
+                donor about blood donation history and compatibility.</div>
+        </div>
+        <div class="right">
+            <img src="../assets/logo.png" alt="">
         </div>
     </div>
+
     <div class="why flex-item-between">
         <div class="left"><img src="../assets/Why.png" alt=""></div>
         <div class="right flex-item-center">
@@ -77,29 +78,7 @@ require "../components/Navbar.php"
         </div>
 
     </div>
-    <div class="about-us flex-item-between">
-        <div class="left">
-            <div class="title">
-                <h1 class=" main-title">Who we are?
-                </h1>
-            </div>
-            <div class="post">The &quot;Red Drop&quot; project aims to develop a comprehensive Blood Donor Management System to
-                streamline and enhance blood donation processes. This system, designed to facilitate the
-                interaction between blood donors, blood banks, and healthcare institutions, will employ an
-                incremental development model. This approach allows for the systematic delivery of key
-                features, ensuring a responsive and evolving platform. Redrop is a web-based system that can
-                assist in the information of blood donors, blood donation events &amp; campaigns, etc. If anyone
-                wants to become a regular blood donor, they can create an account and book a blood donation
-                appointment and donate blood. Also, if anyone needs blood, they can fill out the request form
-                and submit it to get help from Redrop. From this system, several types of reports can be
-                generated, such as blood stock reports, total numbers of donor reports, and the total number of
-                blood donations according to months and years. The system can also provide information to the
-                donor about blood donation history and compatibility.</div>
-        </div>
-        <div class="right">
-            <img src="../assets/logo.png" alt="">
-        </div>
-    </div>
+    
     <div class="events">
         <div class="container">
             <div class="title ">

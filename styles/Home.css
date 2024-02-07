@@ -1,9 +1,9 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}
+} */
 
 .button-main {
     width: 150px;
@@ -58,10 +58,11 @@
     color: #fff;
     font-size: 60px;
     position: absolute;
-    /* bottom: -42px; */
+    /* bottom: -42px; */    
     animation-name: arrow;
     animation-duration: 1s;
     animation-iteration-count: infinite;
+    z-index: 99;
 }
 
 @keyframes arrow {
@@ -82,6 +83,7 @@
     bottom: -110px;
     right: 47.5%;
     position: absolute;
+    z-index: 99;
     
 }
 
@@ -148,7 +150,7 @@
     flex-wrap: wrap-reverse;
     width: 100%;
     height: 100%;
-    padding: 5rem;
+    padding: 5rem 5rem 0;
 }
 
 .why .left img {
