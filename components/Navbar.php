@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-light.css">
+
+    <link rel="stylesheet" href="../styles/Navbar.css">
+
+
+</head>
+
+<body>
+    <div class="main">
+        <nav>
+            <div class="logo"><img src="../assets/logo.webp" alt=""></div>
+            <div class="profile">
+                <div class="register">
+                    <a href="#" class="button-login"><button>Login</button></a>
+                    <a href="#" class="button-signup"><button>Create an account</button></a>
+                </div>
+                <div class="profile-img"></div>
+                <div class="dropdown" onclick="dropDownHandler()" >
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="drop-profile" id="my-dropdown" hidden>
+                    <ul>
+                        <a href="">
+                        
+                            <li><i class="fa-duotone fa-gauge"></i> Dashboard</li>
+                        </a>
+                        <a href="">
+                        
+                            <li><i class="fa-duotone fa-gear"></i> Setting</li>
+                        </a>
+                        <a href="">
+                           
+                            <li> <i class="fa-duotone fa-arrow-right-from-bracket"></i> Logout</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+<script src="../components/Navbar.js"></script>
+</body>
+
+</html>

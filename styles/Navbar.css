@@ -1,0 +1,124 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.logo img {
+    width: 180px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../assets/Profile.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* display: none; */
+}
+
+.dropdown{
+    cursor: pointer;
+}
+
+.main {
+    padding: 10px 50px;
+
+}
+
+div.register a {
+    text-decoration: none;
+}
+
+.button-login button {
+    width: 170px;
+    height: 50px;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #d73e41;
+    color: white;
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.button-signup button {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    padding: 10px;
+    color: #B91216;
+    background-color: rgb(233, 233, 233);
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.button-login button:hover {
+    color: #ffffff;
+    background-color: #a30003;
+
+}
+
+.button-signup button:hover {
+    color: #B91216;
+    text-decoration: underline;
+
+
+}
+
+
+.drop-profile {
+    /* display: none; */
+    position: absolute;
+    z-index: 99;
+    width: 200px;
+    height: 150px;
+    background-color: #B91216;
+    color: #fff;
+    top: 9vh;
+    right: -5px;
+    
+}
+
+.drop-profile ul {
+    list-style: none;
+}
+
+.drop-profile ul a {
+    text-decoration: none;
+    color: black;
+}
+.drop-profile ul a:hover{
+    color: #fff;
+}
+
+.drop-profile ul li {
+    font-size: 20px;
+    margin: 20px 0;
+}
