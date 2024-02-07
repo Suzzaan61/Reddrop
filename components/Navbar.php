@@ -22,8 +22,8 @@
             <div class="logo"><img src="../assets/logo.webp" alt=""></div>
             <div class="profile">
                 <div class="register">
-                    <a href="#" class="button-login"><button>Login</button></a>
-                    <a href="#" class="button-signup"><button>Create an account</button></a>
+                    <a href="../components/login.php" class="button-login"><button>Login</button></a>
+                    <a href="../components/register.php" class="button-signup"><button>Create an account</button></a>
                 </div>
                 <div class="profile-img"></div>
                 <div class="dropdown" onclick="dropDownHandler()">

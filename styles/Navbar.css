@@ -21,7 +21,6 @@ nav {
     left: 0;
     padding: 5px 50px;
 
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.23);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -53,11 +52,12 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* display: none; */
+    display: none;
 }
 
 .dropdown {
     cursor: pointer;
+    display: none;
 }
 
 .main {
