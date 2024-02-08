@@ -56,8 +56,7 @@ input {
     gap: 20px;
 }
 
-input[type="submit"],
-input[type="button"] {
+input[type="submit"]{
     width: 150px;
     height: 50px;
     font-size: 18px;
@@ -70,8 +69,25 @@ input[type="button"] {
     cursor: pointer;
 }
 
+input[type="button"] {
+    width: 230px;
+    height: 50px;
+    font-size: 18px;
+    padding: 10px;
+    color: #B91216;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+}
+
 input[type="submit"]:hover,
 input[type="button"]:hover {
     background-color: #B91216;
     color: white;
+}
+
+select{
+    width: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
 }
