@@ -1,0 +1,65 @@
+
+.button-main {
+    width: 150px;
+    height: 50px;
+    font-size: 18px;
+    padding: 10px;
+    color: #B91216;
+    background-color: rgb(233, 233, 233);
+    border: none;
+    outline: none;
+    font-weight: 500;
+}
+
+
+.button-main:hover {
+    background-color: #B91216;
+    color: white;
+}
+
+.flex-item-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-item-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero {
+    height: 100vh;
+    padding: 12%;
+    background-color: #ffffff;
+
+}
+
+.hero .action-cards {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hero .cards {
+    width: 200px;
+    height: 220px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #B91216;
+}
+
+.hero .cards i {
+    color: #B91216;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+

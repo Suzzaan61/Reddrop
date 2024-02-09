@@ -17,6 +17,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
+.login-container .wrong-pass, #user-not-found{
+    color: red;
+    font-size: 15px;
+}
+#successfully-register{
+    color: green;
+    font-size: 15px;
+}
 
 h2 {
     text-align: center;

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-regular.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-light.css">
 
-    <link rel="stylesheet" href="../styles/Navbar.css">
+    <link rel="stylesheet" href="../styles/loggedNav.css">
 
 </head>
 
@@ -22,11 +22,6 @@
         <nav>
             <div class="logo"><img src="../assets/logo.webp" alt=""></div>
             <div class="profile">
-
-                <div class="register">
-                    <a href="../components/login.php" class="button-login"><button>Login</button></a>
-                    <a href="../components/register.php" class="button-signup"><button>Create an account</button></a>
-                </div>
                 <?php
                 if ($result) {
                     $row = $result->fetch_assoc();

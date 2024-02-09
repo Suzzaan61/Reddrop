@@ -10,6 +10,11 @@ body {
     background-position: center;
 }
 
+#failed{
+    color: red;
+    font-size: 15px;
+}
+
 .container {
     display: flex;
     align-items: center;

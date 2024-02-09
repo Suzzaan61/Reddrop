@@ -10,17 +10,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $donorStatus = $_POST['donorStatus'];
     $contactNumber = $_POST['phone'];
     
-    //echo $name . '<br>' . $email . '<br>' . $password . '<br>' . $bloodType . '<br>' . $address . '<br>' . $donorStatus . '<br>' . $contactNumber;
 
 
-    $sql = "INSERT INTO users ( `name`, `email`, `password`, `phone`, `blood-Type`, `address`, `donor-Status`)
+    $sql = "INSERT INTO users ( `name`, `email`, `password`, `contactNumber`, `bloodType`, `address`, `donorStatus`)
             VALUES ('$name', '$email', '$password','$contactNumber', '$bloodType', '$address', '$donorStatus')";
     
 
     $registered = $conn -> query($sql);
-    if($conn){
-        echo "refister successful";
+    if($registered){
+        header("Location: ../components/login.php?done=1");
     }else{
-        echo "failed";
+        header("Location: ../components/login.php?failed=1");
     }
+} else {
+    
+    header("Location: ../components/register.php?unable=1");
+    exit();
 }

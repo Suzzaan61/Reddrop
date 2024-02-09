@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
     <link rel="stylesheet" href="../styles/register.css">
+    <script>
+        
+    </script>
 </head>
 
 <body>
     <div class="container">
         <h2>User Registration</h2>
+       
         <div class="registration-form">
+            
 
             <form action="../main/process_registration.php" method="post">
+            <p class="failed" id="failed" >Failed to register, Try again.</p>
+
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
 
@@ -24,7 +31,7 @@
                 <input type="password" id="password" name="password" required><br>
 
                 <label for="address">Address</label>
-                <input type="text" id="addressId" name="address"  required><br>
+                <input type="text" id="address" name="address"  required><br>
 
                 <label for="phone">Contact Number:</label>
                 <input type="text" id="phone" name="phone" required><br>
@@ -62,3 +69,20 @@
 </body>
 
 </html>
+
+<?php
+    if (isset($_GET["unable"]) && ($_GET["unable"] == 1)) {
+        echo "<script>
+        document.getElementById('failed').removeAttribute('hidden');
+    </script>";
+    }
+    if (isset($_GET["failed"]) && ($_GET["failed"] == 1)) {
+        echo "<script>
+        document.getElementById('failed').removeAttribute('hidden');
+    </script>";
+    }else{
+        echo "<script>
+        document.getElementById('failed').setAttribute('hidden','');
+    </script>";
+    }
+?>
