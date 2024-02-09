@@ -51,7 +51,7 @@
 
                             <li><i class="fa-duotone fa-gear"></i> Setting</li>
                         </a>
-                        <a href="">
+                        <a href="../main/logout.php">
 
                             <li> <i class="fa-duotone fa-arrow-right-from-bracket"></i> Logout</li>
                         </a>

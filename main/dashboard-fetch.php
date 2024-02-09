@@ -9,4 +9,6 @@ require "../PhpConfig/connection.php";
         WHERE `userId` = '$userId' ";
 
         $result = $conn -> query($sql);
+    }else{
+        $result = 0;
     }
