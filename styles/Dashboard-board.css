@@ -32,7 +32,13 @@
     height: 90vh    ;
     padding: 12%;
     background-color: #ffffff;
+    flex-direction: column;
+    gap: 20px;
 
+}
+.appointment{
+    font-size: 28px;
+    color: green;
 }
 
 .hero .action-cards {
