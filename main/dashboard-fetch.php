@@ -1,9 +1,9 @@
 <?php
 require "../PhpConfig/connection.php";
-    if(isset($_COOKIE['userid']) && $_COOKIE['userid'] >= 0)
+    if(isset($_SESSION['userid']) && $_SESSION['userid'] >= 0)
     {
 
-        $userId = $_COOKIE['userid'];
+        $userId = $_SESSION['userid'];
 
         $sql = "SELECT * FROM `users` 
         WHERE `userId` = '$userId' ";

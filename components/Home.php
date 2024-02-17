@@ -1,5 +1,11 @@
 <?php
-require "../components/Navbar.php"
+require "../components/Navbar.php";
+session_start();
+
+if($_SESSION['userid'] >= 0){
+    header("Location: ../components/Dashboard.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +25,7 @@ require "../components/Navbar.php"
     <div class="slogan">
         <div class="gradient flex-item-center">
             <p>Uniting Hearts, Saving Lives<br> - Together, We Make a Lifesaving Difference!</p>
-            <button class="button-main">Save A Life</button>
+            <a href="../components/register.php"><button class="button-main">Save A Life</button></a>
             <div class="arrow"><i class="fa-duotone fa-arrow-down first"></i><i class="fa-duotone fa-computer-mouse-scrollwheel second"></i></div>
         </div>
     </div>
@@ -78,7 +84,7 @@ require "../components/Navbar.php"
         </div>
 
     </div>
-    
+
     <div class="events">
         <div class="container">
             <div class="title ">
@@ -122,7 +128,8 @@ require "../components/Navbar.php"
             </div>
         </div>
     </div>
-    <hr><hr>
+    <hr>
+    <hr>
     <footer>
         <div class="any-query">
             <p class="query sec-title">Any Query?</p>
@@ -139,14 +146,16 @@ require "../components/Navbar.php"
             </form>
         </div>
         <div class="contact-us flex-item-center">
-           <div class="social-contact"><p class="social-media sec-title">Social Media</p></div> 
+            <div class="social-contact">
+                <p class="social-media sec-title">Social Media</p>
+            </div>
             <i class="fa-brands fa-facebook"></i>
             <i class="fa-brands fa-instagram"></i>
             <i class="fa-brands fa-dribbble"></i>
             <i class="fa-brands fa-linkedin-in"></i>
             <i class="fa-brands fa-tiktok"></i>
             <i class="fa-brands fa-twitter"></i>
-            
+
         </div>
 
         <div class="navigating">

@@ -1,4 +1,10 @@
-<?php require "../components/LoggedNav.php" ?>
+<?php require "../components/LoggedNav.php" ;
+session_start();
+if(!isset($_SESSION['userid'])){
+    header("Location: ../components/Home.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,23 +21,23 @@
         <div class="action-cards flex-item-center">
             <div class="donate cards">
                 <i class="fa-duotone fa-droplet"></i>
-                <button class="button-main">Donate</button>
+               <a href="../Modules/Donate.php?successful=1"><button class="button-main">Donate</button></a> 
             </div>
             <div class="request cards">
                 <i class="fa-duotone fa-truck-droplet"></i>
-                <button class="button-main">Request</button>
+                <a href="../Modules/Donate.php"><button class="button-main">Request</button></a> 
             </div>
             <div class="compatibality-table cards">
                 <i class="fa-duotone fa-table"></i>
-                <button class="button-main">Compatibality</button>
+                <a href="../Modules/Donate.php"><button class="button-main">Compatibality</button></a> 
             </div>
             <div class="records cards">
                 <i class="fa-duotone fa-books"></i>
-                <button class="button-main">Records</button>
+                <a href="../Modules/Donate.php"><button class="button-main">Records</button></a> 
             </div>
             <div class="events cards">
                 <i class="fa-duotone fa-calendar-days"></i>
-                <button class="button-main">Events</button>
+                <a href="../Modules/Donate.php"><button class="button-main">Events</button></a> 
             </div>
         </div>
     </div>
@@ -40,7 +46,7 @@
 </html>
 
 <?php
-if (isset($_COOKIE['userid']) && $_COOKIE['userid'] >= 0) {
+if (isset($_SESSION['userid']) && $_SESSION['userid'] >= 0) {
     echo "<style>.profile-img {
             display: inline-block;
         }
@@ -49,6 +55,9 @@ if (isset($_COOKIE['userid']) && $_COOKIE['userid'] >= 0) {
         }
         .register{
             display: none;
-        }<style>";
+        }
+        
+        <style>";
 }
+require "../Modules/Footer.php"
 ?>

@@ -1,5 +1,6 @@
 <?php
 require "../PhpConfig/connection.php";
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['email'];
@@ -19,10 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $log_userid = $row['userId'];
 
             if ($save == 1) {
-                
-                setcookie("userid", $log_userid, time() + (7 * 24 * 60 * 60), "/");
+                $_SESSION['userid'] = $log_userid;
             } else {
-                setcookie("userid", $log_userid, time() + 86400, "/");
+                $_SESSION['userid'] = $log_userid;
             }
 
             // setcookie("user_id", $log_, time() + (7 * 24 * 60 * 60), "/");

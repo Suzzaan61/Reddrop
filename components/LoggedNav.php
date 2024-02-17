@@ -27,7 +27,6 @@
                     $row = $result->fetch_assoc();
                     echo "<p id='user-name'>" . $row['name'] . "</p>";
                 }
-
                 ?>
                 <div class="profile-img"></div>
                 <div class="dropdown" onclick="dropDownHandler()">
