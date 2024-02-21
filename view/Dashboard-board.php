@@ -26,23 +26,23 @@ if (!isset($_SESSION['userid'])) {
         <div class="action-cards flex-item-center">
             <div class="donate cards">
                 <i class="fa-duotone fa-droplet"></i>
-                <a href="../Modules/Donate.php?successful=1"><button class="button-main">Donate</button></a>
+                <a href="../model/Donate.php?successful=1"><button class="button-main">Donate</button></a>
             </div>
             <div class="request cards">
                 <i class="fa-duotone fa-truck-droplet"></i>
-                <a href="../Modules/Donate.php"><button class="button-main">Request</button></a>
+                <a href="../model/Donate.php"><button class="button-main">Request</button></a>
             </div>
             <div class="compatibality-table cards">
                 <i class="fa-duotone fa-table"></i>
-                <a href="../Modules/Donate.php"><button class="button-main">Compatibality</button></a>
+                <a href="../model/Donate.php"><button class="button-main">Compatibality</button></a>
             </div>
             <div class="records cards">
                 <i class="fa-duotone fa-books"></i>
-                <a href="../Modules/Donate.php"><button class="button-main">Records</button></a>
+                <a href="../model/Donate.php"><button class="button-main">Records</button></a>
             </div>
             <div class="events cards">
                 <i class="fa-duotone fa-calendar-days"></i>
-                <a href="../Modules/Donate.php"><button class="button-main">Events</button></a>
+                <a href="../model/Donate.php"><button class="button-main">Events</button></a>
             </div>
         </div>
     </div>

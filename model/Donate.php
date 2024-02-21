@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $eligibleDonationDate = 20;
         if ($eligibleDonationDate >= $lastDonationDate + 3) {
         ?>
-            <form action="../main/process_donation.php" method="post">
+            <form action="../controller/process_donation.php" method="post">
 
                 <div id="donate-first">
                     <label for="blood_group">Blood Group:</label>

@@ -1,5 +1,5 @@
 <?php
-require "../PhpConfig/connection.php";
+require "./php-config/connection.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST['name'];

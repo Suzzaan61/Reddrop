@@ -1,4 +1,4 @@
-<?php require "../main/dashboard-fetch.php"; ?>
+<?php require "../../model/dashboard-fetch.php"; ?>
 
 <!doctype html>
 <html lang="en">
@@ -13,20 +13,26 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-regular.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-light.css">
 
-    <link rel="stylesheet" href="../styles/loggedNav.css">
+    <link rel="stylesheet" href="../../styles/Navbar.css">
 
 </head>
 
 <body>
     <div class="main">
         <nav>
-            <div class="logo"><img src="../assets/logo.webp" alt=""></div>
+            <div class="logo"><img src="../../public/images/logo.webp" alt=""></div>
             <div class="profile">
+
+                <div class="register">
+                    <a href="../../components/login.php" class="button-login"><button>Login</button></a>
+                    <a href="../../components/register.php" class="button-signup"><button>Create an account</button></a>
+                </div>
                 <?php
                 if ($result) {
                     $row = $result->fetch_assoc();
                     echo "<p id='user-name'>" . $row['name'] . "</p>";
                 }
+
                 ?>
                 <div class="profile-img"></div>
                 <div class="dropdown" onclick="dropDownHandler()">
@@ -34,10 +40,10 @@
                 </div>
                 <div class="drop-profile" id="my-dropdown" hidden>
                     <ul>
-                        <a href="../components/Dashboard.php?successful=1">
+                        <a href="../../components/Dashboard.php?successful=1">
                             <li><i class="fa-duotone fa-house"></i> Home</li>
                         </a>
-                        <a href="../components/Dashboard-board.php">
+                        <a href="../../components/Dashboard-board.php">
 
                             <li><i class="fa-duotone fa-gauge"></i> Dashboard</li>
                         </a>
@@ -45,7 +51,7 @@
 
                             <li><i class="fa-duotone fa-gear"></i> Setting</li>
                         </a>
-                        <a href="../main/logout.php">
+                        <a href="../../controller/logout.php">
 
                             <li> <i class="fa-duotone fa-arrow-right-from-bracket"></i> Logout</li>
                         </a>
@@ -55,7 +61,7 @@
         </nav>
     </div>
 
-    <script src="../components/Navbar.js"></script>
+    <script src="../../public/js/Navbar.js"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@ if (!isset($_SESSION['userid'])) {
             <span class="last-donation-date">Last Donation Date : 2020/01/01</span>
             <span class="last-donation-date">Eligible Donation Date : 2020/01/01</span>
         </div>
-        <form action="../main/process_donation.php" method="post">
+        <form action="../controller/process_donation.php" method="post">
             <div>
                 <div class="container">
                     <h2 class="mb-4">Select Donation Date and Time</h2>

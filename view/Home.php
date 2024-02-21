@@ -1,5 +1,5 @@
 <?php
-require "../components/Navbar.php";
+require "./partials/Navbar.php";
 session_start();
 
 if($_SESSION['userid'] >= 0){
@@ -25,7 +25,7 @@ if($_SESSION['userid'] >= 0){
     <div class="slogan">
         <div class="gradient flex-item-center">
             <p>Uniting Hearts, Saving Lives<br> - Together, We Make a Lifesaving Difference!</p>
-            <a href="../components/register.php"><button class="button-main">Save A Life</button></a>
+            <a href="register.php"><button class="button-main">Save A Life</button></a>
             <div class="arrow"><i class="fa-duotone fa-arrow-down first"></i><i class="fa-duotone fa-computer-mouse-scrollwheel second"></i></div>
         </div>
     </div>
@@ -50,12 +50,12 @@ if($_SESSION['userid'] >= 0){
                 donor about blood donation history and compatibility.</div>
         </div>
         <div class="right">
-            <img src="../assets/logo.png" alt="">
+            <img src="../public/images/logo.png" alt="">
         </div>
     </div>
 
     <div class="why flex-item-between">
-        <div class="left"><img src="../assets/Why.png" alt=""></div>
+        <div class="left"><img src="../public/images/Why.png" alt=""></div>
         <div class="right flex-item-center">
             <div class="title">
                 <h1 class=" main-title">Why Donate Blood?</h1>
@@ -92,32 +92,32 @@ if($_SESSION['userid'] >= 0){
             </div>
             <div class="event-cards flex-item-center">
                 <div class="cards">
-                    <img src="../assets/event.png" alt="">
+                    <img src="../public/images/event.png" alt="">
                     <div class="event-title">Blood donation Event</div>
                     <div class="event-date">2080/05/04</div>
                     <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
                 </div>
-                <div class="cards"><img src="../assets/event.png" alt="">
+                <div class="cards"><img src="../public/images/event.png" alt="">
                     <div class="event-title">Blood donation Event</div>
                     <div class="event-date">2080/05/04</div>
                     <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
                 </div>
-                <div class="cards"><img src="../assets/event.png" alt="">
+                <div class="cards"><img src="../public/images/event.png" alt="">
                     <div class="event-title">Blood donation Event</div>
                     <div class="event-date">2080/05/04</div>
                     <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
                 </div>
-                <div class="cards"><img src="../assets/event.png" alt="">
+                <div class="cards"><img src="../public/images/event.png" alt="">
                     <div class="event-title">Blood donation Event</div>
                     <div class="event-date">2080/05/04</div>
                     <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
                 </div>
-                <div class="cards"><img src="../assets/event.png" alt="">
+                <div class="cards"><img src="../public/images/event.png" alt="">
                     <div class="event-title">Blood donation Event</div>
                     <div class="event-date">2080/05/04</div>
                     <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
                 </div>
-                <div class="cards"><img src="../assets/event.png" alt="">
+                <div class="cards"><img src="../public/images/event.png" alt="">
                     <div class="event-title">Blood donation Event</div>
                     <div class="event-date">2080/05/04</div>
                     <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
@@ -177,7 +177,7 @@ if($_SESSION['userid'] >= 0){
         </div>
     </footer>
     <div class="cp-section">
-        <img src="../assets/logo.webp" alt="">
+        <img src="../public/images/logo.webp" alt="">
         <p>Copyright © 2024 Red Drop, Org.</p>
     </div>
 </body>

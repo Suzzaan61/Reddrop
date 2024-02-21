@@ -18,7 +18,7 @@
         <div class="registration-form">
             
 
-            <form action="../main/process_registration.php" method="post">
+            <form action="../controller/process_registration.php" method="post">
             <p class="failed" id="failed" >Failed to register, Try again.</p>
 
                 <label for="name">Name:</label>
@@ -57,7 +57,7 @@
 
                 <div class="btn-container">
                     <input type="submit" value="Register">
-                    <a href="../components/login.php">
+                    <a href="login.php">
                         <input type="button" value="Already have an account">
                     </a>
                 </div>

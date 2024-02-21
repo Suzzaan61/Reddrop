@@ -1,5 +1,5 @@
 <?php
-require "../PhpConfig/connection.php";
+require "../controller/php-config/connection.php";
     if(isset($_SESSION['userid']) && $_SESSION['userid'] >= 0)
     {
 

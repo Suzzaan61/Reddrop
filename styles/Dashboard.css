@@ -58,7 +58,7 @@
 .slogan {
     width: 100%;
     height: 500px;
-    background: url(../assets/slogan-top.jpg);
+    background: url(../public/images/slogan-top.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

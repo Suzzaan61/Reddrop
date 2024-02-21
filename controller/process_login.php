@@ -1,5 +1,5 @@
 <?php
-require "../PhpConfig/connection.php";
+require "../php-config/connection.php";
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -19,11 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $log_userid = $row['userId'];
 
-            if ($save == 1) {
-                $_SESSION['userid'] = $log_userid;
-            } else {
-                $_SESSION['userid'] = $log_userid;
-            }
+            $_SESSION['userid'] = $log_userid;
+
 
             // setcookie("user_id", $log_, time() + (7 * 24 * 60 * 60), "/");
             header("Location: ../components/Dashboard.php?successful=1");
