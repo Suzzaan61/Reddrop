@@ -1,6 +1,8 @@
 RewriteEngine On
-RewriteBase /redrop/
-RewriteRule ^index\\.php$ - [L]
+
+#location of your website
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /folder/index.php [L]
+
+RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]

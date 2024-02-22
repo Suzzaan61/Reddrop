@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Login</title>
-    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../public/styles/login.css">
     <script>
         document.getElementById("wrong-pass").removeAttribute("hidden");
         document.getElementById('successfully-register').removeAttribute("hidden")
@@ -20,7 +20,7 @@
         <p class="wrong-pass" id="wrong-pass" hidden>wrong password, Try again.</p>
         <p class="successfully-register" id="successfully-register" hidden>Successfully register, Please login.</p>
         <p class="unable-login" id="user-not-found">User not found please  <a href="register.php">create an account</a></p>
-        <form action="../controller/process_login.php" method="post">
+        <form action="/redrop/process_login" method="post">
             <label for="username">Email:</label>
             <input type="text" id="email" name="email" required>
 

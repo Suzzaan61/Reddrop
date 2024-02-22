@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate</title>
-    <link rel="stylesheet" href="../styles/Donate.css">
+    <link rel="stylesheet" href="../public/styles/Donate.css">
     <?php require "../components/LoggedNav.php"; ?>
 </head>
 

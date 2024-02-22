@@ -23,15 +23,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             // setcookie("user_id", $log_, time() + (7 * 24 * 60 * 60), "/");
-            header("Location: ../components/Dashboard.php?successful=1");
+            header("Location: ./views/Dashboard.php?successful=1");
             exit();
         } else {
-            header("Location: ../components/login.php?error=1");
+            header("Location:   /views/login.php?error=1");
         }
     } else {
-        header("Location: ../components/login.php?notfound=1");
+        header("Location: /views/login.php?notfound=1");
     }
 } else {
-    header("Location: ../components/login.php");
+    header("Location: ../views/login.php");
     exit();
 }

@@ -1,11 +1,12 @@
 <?php
-require "./partials/Navbar.php";
+require dirname(__DIR__) . "/views/partials/Navbar.php";
 session_start();
 
-if($_SESSION['userid'] >= 0){
-    header("Location: ../components/Dashboard.php");
-    exit();
-}
+//if($_SESSION['userid'] >= 0){
+//    header("Location: ../model/Dashboard.php");
+//    exit();
+//}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,10 @@ if($_SESSION['userid'] >= 0){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/Home.css">
+    <link rel="stylesheet" href="../public/styles/Home.css">
+    <style>
+        <?php require dirname(__DIR__)."/public/styles/Navbar.css";?>
+    </style>
 
 </head>
 
@@ -78,7 +82,6 @@ if($_SESSION['userid'] >= 0){
                     <li><span>Reduce harmful iron stores</span>
                 </ol>
 
-                </p>
                 <div class="more flex-item-between"><button class="button-main">Learn More</button></div>
             </div>
         </div>

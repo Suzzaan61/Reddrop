@@ -4,10 +4,16 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 } */
-
-#user-name{
-    display: none;
+/*change nav bar*/
+/* .profile-img {
+    display: inline-block;
 }
+.dropdown{
+    display: inline-block;
+}
+.register{
+    display: none;
+} */
 
 .button-main {
     width: 150px;
@@ -52,7 +58,7 @@
 .slogan {
     width: 100%;
     height: 500px;
-    background: url(../public/images/slogan-top.jpg);
+    background: url(../images/slogan-top.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
