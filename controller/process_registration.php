@@ -1,5 +1,5 @@
 <?php
-require "./php-config/connection.php";
+require "../php-config/connection.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST['name'];
@@ -18,12 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $registered = $conn -> query($sql);
     if($registered){
-        header("Location: ../components/login.php?done=1");
+        header("Location: ../view/login.php?done=1");
     }else{
-        header("Location: ../components/login.php?failed=1");
+        header("Location: ../view/login.php?failed=1");
     }
 } else {
     
-    header("Location: ../components/register.php?unable=1");
+    header("Location: ../view/register.php?unable=1");
     exit();
 }

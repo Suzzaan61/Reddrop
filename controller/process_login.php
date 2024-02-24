@@ -19,19 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $log_userid = $row['userId'];
 
-            $_SESSION['userid'] = $log_userid;
-
+            if ($save == 1) {
+                $_SESSION['userid'] = $log_userid;
+            } else {
+                $_SESSION['userid'] = $log_userid;
+            }
 
             // setcookie("user_id", $log_, time() + (7 * 24 * 60 * 60), "/");
-            header("Location: ./views/Dashboard.php?successful=1");
+            header("Location: ../view/Dashboard.php?successful=1");
             exit();
         } else {
-            header("Location:   /views/login.php?error=1");
+            header("Location: ../view/login.php?error=1");
         }
     } else {
-        header("Location: /views/login.php?notfound=1");
+        header("Location: ../view/login.php?notfound=1");
     }
 } else {
-    header("Location: ../views/login.php");
+    header("Location: ../view/login.php");
     exit();
 }

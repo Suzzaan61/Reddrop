@@ -4,9 +4,5 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="all" level="application" />
-    <orderEntry type="library" name="sharp-solid" level="application" />
-    <orderEntry type="library" name="sharp-regular" level="application" />
-    <orderEntry type="library" name="sharp-light" level="application" />
   </component>
 </module>
