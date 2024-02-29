@@ -1,4 +1,10 @@
+<?php
+if(isset($_SESSION['adminId'])){
+    require "../controller/dashboard-fetch.php";
 
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,56 +12,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        #sidePanel {
-            width: 300px;
-            height: 100vh;
-            background-color: #B91216;
-            color: #fff;
-            padding: 20px;
-            box-sizing: border-box;
-
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        #content {
-            flex: 1;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        h1, h2 {
-            color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-light.css">
+    <link rel="stylesheet" href="../Public/styles/Admin-Panel.css">
+    <?php require "../views/AdminNav.php"?>
 </head>
 <body>
+<div class="admin-main">
 
 <div id="sidePanel">
     <h1>Admin Panel</h1>
     <ul>
-        <li><a href="./admin-dashboard.php" target="contentFrame">Dashboard</a></li>
-        <li><a href="./usermanagement.php" target="contentFrame">User Management</a></li>
-        <li><a href="profile_settings.php" target="contentFrame">Profile Settings</a></li>
+        <a href="./admin-dashboard.php" target="contentFrame"><li><i class="fa-duotone fa-gauge"></i> Dashboard</li></a>
+        <a href="./Blood-request.php" target="contentFrame"><li><i class="fa-duotone fa-truck-droplet"></i> Bloods Request</li></a>
+        <a href="./usermanagement.php" target="contentFrame"> <li><i class="fa-duotone fa-user"></i> User Management</li></a>
+        <a href="./Donation-center.php" target="contentFrame"><li><i class="fa-duotone fa-hospitals"></i> Donation Center</li></a>
+        <a href="./Pending-appointment.php" target="contentFrame"> <li><i class="fa-duotone fa-calendar-check"></i> Pending Appointments</li></a>
+        <a href="./Events.php" target="contentFrame"><li><i class="fa-duotone fa-calendar-days"></i> Events Management</li></a>
+        <a href="./Inbox.php" target="contentFrame"><li><i class="fa-duotone fa-inbox"></i>Inbox</li></a>
     </ul>
 </div>
 
 <div id="content">
-    <iframe name="contentFrame" src="./usermanagement.php"></iframe>
+    <iframe name="contentFrame" src="./admin-dashboard.php"></iframe>
+</div>
 </div>
 
 </body>

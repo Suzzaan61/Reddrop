@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <table id="donationTable">
     <thead>
     <tr>
-        <th>Name</th>
+        <th>Donation Center Name</th>
         <th>Blood Type</th>
         <th>Donation Date</th>
         <th>Location</th>
@@ -83,11 +83,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="button" onclick="history.back()">Back</button>
 
     </div>
-</div>
+
 
 <script>
     function filterTable() {
-        var input, year, filter, table, tr, td, i, txtValue;
+        let input, year, filter, table, tr, td, i, txtValue;
         input = document.getElementById("search");
         year = document.getElementById("year").value;
         filter = input.value.toUpperCase();
@@ -95,15 +95,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         tr = table.getElementsByTagName("tr");
 
         // Loop through all table rows, and hide those that don't match the search query and year
+        let yearColumn;
+        let yearValue;
+
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0]; // Assume the name is in the first column
             yearColumn = tr[i].getElementsByTagName("td")[2]; // Assume the year is in the third column
             if (td && yearColumn) {
                 txtValue = td.textContent || td.innerText;
                 yearValue = yearColumn.textContent || yearColumn.innerText;
+                // console.log(yearValue.includes(year));
                 if ((txtValue.toUpperCase().indexOf(filter) > -1 || filter === "") &&
-                    (year === "all" || year === yearValue)) {
+                    (year === "all" || yearValue.includes(year))) {
                     tr[i].style.display = "";
+                    // console.log('hello');
                 } else {
                     tr[i].style.display = "none";
                 }

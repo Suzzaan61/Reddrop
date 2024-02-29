@@ -57,7 +57,7 @@
 
                 <div class="btn-container">
                     <input type="submit" value="Register">
-                    <a href="/login.php">
+                    <a href="login.php">
                         <input type="button" value="Already have an account">
                     </a>
                 </div>

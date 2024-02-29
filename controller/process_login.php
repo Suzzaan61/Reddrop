@@ -5,11 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-    if (isset($_POST['save'])) {
-        $save = $_POST['save'];
-    } else {
-        $save = 0;
-    }
 
     $sql = "SELECT * FROM users WHERE email = '$email'";
     $result = $conn->query($sql);
@@ -19,8 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             $log_userid = $row['userId'];
 
-            if ($save == 1) {
-                $_SESSION['userid'] = $log_userid;
+            if ($row['adminId'] != null) {
+                $_SESSION['adminId'] = $row['adminId'];
+                header("Location: ../admin/views/admin-panel.php?successful=1");
+                exit();
             } else {
                 $_SESSION['userid'] = $log_userid;
             }

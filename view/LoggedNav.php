@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-light.css">
 
     <link rel="stylesheet" href="../styles/loggedNav.css">
+    <title></title>
 
 </head>
 
