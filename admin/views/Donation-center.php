@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +16,26 @@
 <body>
 
 <div id="donationCenters">
-
     <h2>Donation Centers</h2>
 
     <input type="text" class="search-bar" placeholder="Search..." oninput="searchDonationCenters(this.value)">
-
+    <?php if (isset($_GET['done']) && $_GET['done'] == '1'){?>
+    <div class="entered">
+        <p>Added a Donation Center Successfully.</p>
+    </div>
+    <?php }?>
+    <?php if (isset($_GET['done']) && $_GET['done'] == '0'){?>
+        <div class="failed">
+            <p>Failed to add a Donation Center.</p>
+        </div>
+    <?php }?>
     <button class="add-donation-center-btn" onclick="openPopup()">Add Donation Center</button>
 
     <!-- Donation Centers Table -->
     <table id="donationCenterTable">
         <thead>
         <tr>
+            <th>SN.</th>
             <th>Name</th>
             <th>Address</th>
             <th>Contact</th>
@@ -29,17 +45,28 @@
         </thead>
         <tbody>
         <!-- Sample donation center data -->
-        <tr>
-            <td>Red Cross</td>
-            <td>123 Main St, Cityville</td>
-            <td>123-456-7890</td>
-            <td><a href="https://maps.google.com/?q=123+Main+St+Cityville" target="_blank">Google Maps Link</a></td>
-            <td>
-                <button class="edit-btn" onclick="editDonationCenter(this)">Edit</button>
-                <button class="delete-btn" onclick="deleteDonationCenter(this)">Delete</button>
-            </td>
-        </tr>
-        <!-- Add more rows as needed -->
+        <?php
+            require "../model/Admin-donationCenter-fetch.php";
+            if ($done->num_rows > 0){
+                $i=1;
+                while ($donationCenterData = $done->fetch_assoc()){
+            ?>
+                    <tr>
+                        <td><?php echo $i?></td>
+                        <td><?php echo $donationCenterData['D_NAME'] ?></td>
+                        <td><?php echo $donationCenterData['D_ADDRESS'] ?></td>
+                        <td><?php echo $donationCenterData['D_CONTACT']?></td>
+                        <td><a href="<?php echo $donationCenterData['D_LOCATION'] ?>" target="_blank">Google Maps Link</a></td>
+                        <td>
+                            <button class="edit-btn" onclick="editDonationCenter(this)">Edit</button>
+                            <button class="delete-btn" onclick="deleteDonationCenter(this)">Delete</button>
+                        </td>
+                    </tr>
+
+                    <?php
+                 $i++;}
+            }
+        ?>
         </tbody>
     </table>
 
@@ -59,7 +86,7 @@
             <label for="editGoogleMapLink">Google Maps Link:</label>
             <input type="text" id="editGoogleMapLink" name="editGoogleMapLink" placeholder="Paste Google Maps link">
 
-            <button onclick="saveEditedDonationCenter()">Save Changes</button>
+            <button type="submit">Save Changes</button>
             <button class="delete-btn" onclick="closeEditPopup()">Cancel</button>
         </div>
     </div>
@@ -67,21 +94,23 @@
     <!-- Add Donation Center Popup -->
     <div class="popup" id="addDonationCenterPopup">
         <div class="popup-content">
-            <h3>Add Donation Center</h3>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <form action="../controller/add-donation-center.php" method="post">
+                <h3>Add Donation Center</h3>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="address">Address:</label>
-            <textarea id="address" name="address" rows="2" required></textarea>
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="2" required></textarea>
 
-            <label for="contact">Contact:</label>
-            <input type="text" id="contact" name="contact" required>
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required>
 
-            <label for="googleMapLink">Google Maps Link:</label>
-            <input type="text" id="googleMapLink" name="googleMapLink" placeholder="Paste Google Maps link">
+                <label for="googleMapLink">Google Maps Link:</label>
+                <input type="text" id="googleMapLink" name="googleMapLink" placeholder="Paste Google Maps link">
 
-            <button onclick="addDonationCenter()">Submit</button>
-            <button class="delete-btn" onclick="closePopup()">Cancel</button>
+                <button type="submit">Submit</button>
+                <button class="delete-btn" onclick="closePopup()">Cancel</button>
+            </form>
         </div>
     </div>
 
@@ -117,20 +146,8 @@
         const googleMapLink = document.getElementById('googleMapLink').value;
 
         // Add the new donation center to the table
-        const table = document.getElementById('donationCenterTable');
-        const newRow = table.insertRow(table.rows.length);
-        const cell1 = newRow.insertCell(0);
-        const cell2 = newRow.insertCell(1);
-        const cell3 = newRow.insertCell(2);
-        const cell4 = newRow.insertCell(3);
-        const cell5 = newRow.insertCell(4);
 
-        cell1.innerHTML = name;
-        cell2.innerHTML = address;
-        cell3.innerHTML = contact;
-        cell4.innerHTML = `<a href="${googleMapLink}" target="_blank">Google Maps Link</a>`;
-        cell5.innerHTML = `<button class="edit-btn" onclick="editDonationCenter(this)">Edit</button>
-                         <button class="delete-btn" onclick="deleteDonationCenter(this)">Delete</button>`;
+
 
         // Clear the form fields
         document.getElementById('name').value = '';

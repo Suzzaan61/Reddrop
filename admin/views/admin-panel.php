@@ -1,9 +1,9 @@
 <?php
-if(isset($_SESSION['adminId'])){
-    require "../controller/dashboard-fetch.php";
-
+session_start();
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
 }
-
 ?>
 
 <!DOCTYPE html>

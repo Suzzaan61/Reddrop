@@ -13,6 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
+
+<!--Donate Controller-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,26 +34,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--            <p>Donate</p>-->
 <!--        </div>-->
         <?php
-        $lastDonationDate = 10;
-        $eligibleDonationDate = 20;
-        if ($eligibleDonationDate >= $lastDonationDate + 3) {
+        require "../model/donation-fetch.php";
+//        if ($donationData['LAST_BOOKED_TIME'] !== ''){
+            $lastDonationDate = isset($donationData['LAST_BOOKED_TIME']) ? $donationData['LAST_BOOKED_TIME']: 0;
+            $currentDate = $currentDate = date('Y-m-d');
+            $eligibleDonationDate = isset($lastDonationDate)? date('Y-m-d', strtotime($lastDonationDate . ' + 3 months')): 0;
+//        }
+
+        if (strtotime($currentDate) > strtotime($eligibleDonationDate)) {
         ?>
             <form action="../controller/process_donation.php" method="post">
 
                 <div id="donate-first">
-                    <label for="blood_group">Blood Group:</label>
-                    <div class="box">
-                        <select id="blood_group" name="blood_group" required>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                    </div>
+<!--                    <label for="blood_group">Blood Group:</label>-->
+<!--                    <div class="box">-->
+<!--                        <select id="blood_group" name="blood_group" required>-->
+<!--                            <option value="A+">A+</option>-->
+<!--                            <option value="A-">A-</option>-->
+<!--                            <option value="B+">B+</option>-->
+<!--                            <option value="B-">B-</option>-->
+<!--                            <option value="O+">O+</option>-->
+<!--                            <option value="O-">O-</option>-->
+<!--                            <option value="AB+">AB+</option>-->
+<!--                            <option value="AB-">AB-</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
 
 
                     <p>Health Conditions (check all that apply):</p>
@@ -111,19 +119,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <div class="form-group">
                             <label for="datepicker">Choose Date:</label>
-                            <input type="date" id="datepicker" required>
+                            <input type="date" id="datepicker" name="date" required>
+
                         </div>
 
                         <div class="form-group">
                             <label for="timepicker">Choose Time:</label>
-                            <input type="time" id="timepicker" required>
+                            <select name="time" id="timepicker" required>
+                                <option value="">Select your option</option>
+                                <option value="10 A.M - 11 A.M">10 A.M - 11 A.M</option>
+                                <option value="11 A.M -  12 P.M">11 A.M -  12 P.M</option>
+                                <option value="12 P.M - 1 P.M">12 P.M - 1 P.M</option>
+                                <option value="1 P.M - 2 P.M">1 P.M - 2 P.M</option>
+                                <option value="2 P.M - 3 P.M">2 P.M - 3 P.M</option>
+                                <option value="3 P.M - 4 P.M">3 P.M - 4 P.M</option>
+                                <option value="4 P.M - 5 P.M">4 P.M - 5 P.M</option>
+
+                            </select>
                         </div>
                     </div>
 
                     <label for="donation_center">Select Donation Center:</label>
                     <div class="box">
                         <select id="donation_center" name="donation_center" required>
-                            <option value="center1">Donation Center 1</option>
+                            <option value="AXCEL HEALTH INSTITUTE">AXCEL HEALTH INSTITUTE</option>
                             <option value="center2">Donation Center 2</option>  
                             <option value="center3">Donation Center 3</option>
 
@@ -137,18 +156,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </form>
 
-        <?php } else { ?>
-            <div>
-                <span class="last-donation-date">Last Donation Date : 2020/01/01</span>
-                <span class="last-donation-date">Eligible Donation Date : 2020/01/01</span>
-            </div>
-            <h1 class='not-eligible'>Not eligible for donation until</h1>
-            <span><?php echo $eligibleDonationDate ?></span>
-        <?php } ?>
-
 
 
     </div>
+    <?php } else { ?>
+        <div class="not-eligible">
+            <span class="last-donation-date">Last Donation Date : <?php  echo $lastDonationDate   ?></span>
+            <span class="last-donation-date">Eligible Donation Date : <?php echo $eligibleDonationDate?></span>
+
+        <h1 class='not-eligible'>Not eligible for donation until</h1>
+        <span><?php echo $eligibleDonationDate ?></span>
+            <input type="button" value="back" onclick="history.back()" style="width: 100px; margin-top: 20px" >
+        </div>
+    <?php } ?>
     <script>
         const backToFirst = () => {
             document.getElementById('donate-second').setAttribute("hidden", "");

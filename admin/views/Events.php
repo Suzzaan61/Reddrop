@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +18,7 @@
 <div id="events">
 
     <h2>Blood Donation Events</h2>
+    <button class="add-events-btn" onclick="addEventPopup()">Add Events</button>
 
     <div class="event-cards" id="eventCards">
         <!-- Sample event card -->
@@ -80,6 +88,24 @@
         </div>
     </div>
 
+    <!-- Add Event Popup -->
+    <div class="popup" id="addEventPopup">
+        <div class="popup-content">
+            <h3>Event Details</h3>
+            <label for="eventTitle">Title:</label>
+            <input type="text" id="eventTitle" name="eventTitle" required>
+
+            <label for="eventDate">Date:</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+
+            <label for="eventBanner">Banner Image:</label>
+            <input type="file" id="eventBanner" name="eventBanner" accept="image/*">
+
+            <button onclick="saveEvent()">Save</button>
+            <button class="delete-btn" onclick="closeEventPopup()">Cancel</button>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -100,6 +126,9 @@
     function deleteEvent(button) {
 
     }
+    function addEventPopup(){
+        document.getElementById('addEventPopup').style.display = 'flex';
+    }
 
     function openEventPopup() {
         const popup = document.getElementById('eventPopup');
@@ -108,7 +137,9 @@
 
     function closeEventPopup() {
         const popup = document.getElementById('eventPopup');
+        const eventPopup = document.getElementById('addEventPopup');
         popup.style.display = 'none';
+        eventPopup.style.display = 'none';
     }
 
     function saveEvent() {

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
+require "../model/Admin-data-fetch.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +35,27 @@
         </thead>
         <tbody>
         <!-- Sample user data -->
+        <?php
+        if ($userData->num_rows > 0){
+            while ($row=mysqli_fetch_assoc($userData)){
+        ?>
+
+                <tr>
+                    <td><?php echo $row['name'] ?></td>
+                    <td><?php echo $row['bloodtype'] ?></td>
+                    <td><?php echo $row['last_donation_date']?></td>
+                    <td><?php echo $row['contactNumber']?></td>
+                    <td class="btn-group">
+                        <button class="button" onclick="openPopup('editUserPopup')">Edit</button>
+                        <button class="button">Delete</button>
+                    </td>
+
+                </tr>
+
+                <?php
+            }
+        }
+        ?>
         <tr>
             <td>Suzan Ghimire</td>
             <td>O+</td>

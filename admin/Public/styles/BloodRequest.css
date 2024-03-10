@@ -30,6 +30,7 @@ th, td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
+    max-width: 100px;
 }
 
 th {
@@ -64,6 +65,13 @@ input[type="text"] {
     background-color: #4CAF50;
     color: #fff;
     width: 100px;
+    cursor: pointer;
+}
+.green-button:hover{
+    background-color: #5cb85c;
+}
+.green-button:active{
+    background-color: #4CAF50;
 }
 
 .red-button {
@@ -71,6 +79,13 @@ input[type="text"] {
     color: #fff;
     width: 100px;
     margin-top: 5px;
+    cursor: pointer;
+}
+.red-button:hover{
+    background-color: #b20004;
+}
+.red-button:active{
+    background-color: #B91216;
 }
 
 /* Popup styles */

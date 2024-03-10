@@ -98,8 +98,12 @@ body{
     gap: 20px;
     position: relative;
 }
-.message i{
+.popup .message i{
     color: green;
+    font-size: 5rem;
+}
+.popup2 .message i{
+    color: red;
     font-size: 5rem;
 }
 .popuptext{

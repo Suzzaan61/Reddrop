@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

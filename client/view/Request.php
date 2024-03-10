@@ -46,17 +46,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" id="patientName" name="patientName" required>
 
     <label for="bedNumber">Hospital Bed Number:</label>
-    <input type="number" id="bedNumber" name="bedNumber" required>
+    <input type="text" id="bedNumber" name="bedNumber" required>
 
-    <label for="hospitalLocation">Hospital Location:</label>
+    <label for="hospitalLocation">Hospital Address:</label>
     <input type="text" id="hospitalLocation" name="hospitalLocation" required>
 
-    <label for="hospitalContact">Hospital Contact:</label>
-    <input type="text" id="hospitalContact" name="hospitalContact" required>
+    <label for="hospitalContact">Hospital Contact Number:</label>
+    <input type="tel" id="hospitalContact"  pattern="[789][0-9]{9}" name="hospitalContact" required placeholder="10 digit" >
 <div class="btn-container">
     <button  onclick="goBack()">Back</button>
     <button type="submit">Submit Request</button>
-
 </div>
 
 </form>

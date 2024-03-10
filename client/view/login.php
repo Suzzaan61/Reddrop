@@ -31,7 +31,7 @@
             <label for="save">Save login</label>
 
             <input type="submit" value="Login">
-            <a href="/register.php" class="create-acc">create an account</a>
+            <a href="register.php" class="create-acc">create an account</a>
         </form>
     </div>
     <?php

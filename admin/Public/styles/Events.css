@@ -28,6 +28,7 @@ h2 {
 }
 
 .event-card {
+    margin-top: 30px;
     width: 48%;
     background: #fff;
     border-radius: 8px;
@@ -114,4 +115,11 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    width: 100px;
+}
+button:hover{
+    background-color: #ad0004;
+}
+button:active{
+    background-color: #B91216;
 }

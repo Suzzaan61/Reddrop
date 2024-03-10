@@ -21,7 +21,7 @@
 <body>
     <div class="main">
         <nav>
-            <a href="./Home.php"><div class="logo"><img src="../assets/logo.webp" alt=""></div></a>
+            <a href="Home.php"><div class="logo"><img src="../assets/logo.webp" alt=""></div></a>
             <div class="profile">
                 <?php
                 if ($result) {
@@ -42,7 +42,7 @@
 
                             <li><i class="fa-duotone fa-gauge"></i> Dashboard</li>
                         </a>
-                        <a href="../view/Setting.php">
+                        <a href=".php">
                             <li><i class="fa-duotone fa-gear"></i> Setting</li>
                         </a>
                         <a href="../controller/logout.php">

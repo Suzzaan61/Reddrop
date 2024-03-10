@@ -28,6 +28,15 @@ if (!isset($_SESSION['userid'])) {
         </div>
     </div>
 <?php }?>
+<?php if (isset($_GET['booked']) && $_GET['booked']  == '0') { ?>
+    <div class="popup2 popup" id="popup">
+        <div class="message" id="popup-message">
+            <i class="fa-duotone fa-circle-exclamation"></i>
+            <div class="popuptext" id="myPopup">Failed to book appointment</div>
+            <div class="btn" onclick="hidePopup();">Done</div>
+        </div>
+    </div>
+<?php }?>
 
     <?php if (isset($_GET['request']) && $_GET['request']  == '1') { ?>
     <div class="popup" id="popup">
@@ -35,6 +44,17 @@ if (!isset($_SESSION['userid'])) {
             <i class="fa-duotone fa-badge-check"></i>
 
             <div class="popuptext" id="myPopup">Blood requested successful.</div>
+            <div class="btn" onclick="hidePopup();">Done</div>
+        </div>
+    </div>
+
+<?php }?>
+<?php if (isset($_GET['request']) && $_GET['request']  == '0') { ?>
+    <div class="popup" id="popup">
+        <div class="message" id="popup-message">
+            <i class="fa-duotone fa-circle-exclamation"></i>
+
+            <div class="popuptext" id="myPopup">Sorry, Failed to request.</div>
             <div class="btn" onclick="hidePopup();">Done</div>
         </div>
     </div>

@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +20,9 @@
     <div id="profile">
         <img src="../Public/Images/Profile.jpg" alt="Profile Photo" id="profilePhoto">
         <span>John Doe</span>
-        <button id="logout">Logout</button>
+        <a href="../../client/controller/logout.php">
+            <button id="logout">Logout</button>
+        </a>
     </div>
 
 </div>

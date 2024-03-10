@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,25 +26,28 @@
             <th>Name</th>
             <th>Blood Type</th>
             <th>Contact Number</th>
-            <th>Hospital</th>
+            <th>Donation Center</th>
             <th>Appointment Date</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Sample appointment data -->
-        <tr>
-            <td>John Doe</td>
-            <td>A+</td>
-            <td>Main Hospital</td>
-            <td>9800008888</td>
-            <td>2024-02-28</td>
-            <td>
-                <button class="view-btn" onclick="viewAppointment(this)">View</button>
-                <button class="delete-btn" onclick="deleteAppointment(this)">Delete</button>
-            </td>
-        </tr>
-        <!-- Add more rows as needed -->
+        <?php require "../model/Admin-donation-fetch.php";
+            if ($done->num_rows >= 0){
+                while($donationData = $done->fetch_assoc()){?>
+                <tr>
+                    <td><?php echo $donationData['name']?></td>
+                    <td><?php echo $donationData['bloodtype']?></td>
+                    <td><?php echo $donationData['CONTACT_NUMBER']?></td>
+                    <td><?php echo $donationData['D_NAME']?></td>
+                    <td><?php  echo date($donationData['LAST_BOOKED_TIME'])?></td>
+                    <td>
+                        <button class="view-btn" onclick="viewAppointment(this)">View</button>
+                        <button class="delete-btn" onclick="deleteAppointment(this)">Delete</button>
+                    </td>
+                </tr>
+        <?php
+        }}?>
         </tbody>
     </table>
 

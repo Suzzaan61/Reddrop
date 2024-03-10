@@ -1,3 +1,11 @@
+<?php
+session_start();
+require "../model/Admin-request-fetch.php";
+if (!isset($_SESSION['adminId'])) {
+    header("Location: ../../client/view/Home.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +21,15 @@
     <h2>Blood Request Management</h2>
 
     <div class="search-container">
-        <input type="text" id="searchFilter" placeholder="Search by Name, Address, Location, or Phone Number">
+        <input type="text" id="searchFilter" placeholder="Search">
     </div>
 
     <table id="requestTable">
         <thead>
         <tr>
+            <th>SN</th>
             <th>Name</th>
             <th>Address</th>
-            <th>Location</th>
             <th>Phone Number</th>
             <th>Hospital Name</th>
             <th>Hospital Address</th>
@@ -32,37 +40,29 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>John Doe</td>
-            <td>123 Main St</td>
-            <td>Cityville</td>
-            <td>123-456-7890</td>
-            <td>City Hospital</td>
-            <td>456 Hospital St</td>
-            <td>789-123-4567</td>
-            <td>Jane Doe</td>
-            <td>987-654-3210</td>
-            <td>
-                <button class="green-button" onclick="markAsDone('John Doe')">Done</button>
-                <button class="red-button" onclick="openCancellationPopup('John Doe')">Cancel</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Alice Smith</td>
-            <td>456 Oak Ave</td>
-            <td>Townsville</td>
-            <td>321-654-9870</td>
-            <td>Town General Hospital</td>
-            <td>789 Medical Dr</td>
-            <td>654-321-9876</td>
-            <td>Bob Smith</td>
-            <td>123-789-4560</td>
-            <td>
-                <button class="green-button" onclick="markAsDone('Alice Smith')">Done</button>
-                <button class="red-button" onclick="openCancellationPopup('Alice Smith')">Cancel</button>
-            </td>
-        </tr>
 
+        <?php require "../model/Admin-request-fetch.php";
+        if ($done->num_rows >= 0){
+            $i = 1;
+
+            while($requestData = $done->fetch_assoc()){ ?>
+                <tr>
+                    <td><?php echo $i?></td>
+                    <td><?php echo $requestData['name']?></td>
+                    <td><?php echo $requestData['address']?></td>
+                    <td><?php echo $requestData['contactNumber']?></td>
+                    <td><?php echo $requestData['HOSPITAL_NAME']?></td>
+                    <td><?php echo $requestData['HOSPITAL_ADDRESS']?></td>
+                    <td><?php echo $requestData['HOSPITAL_CONTACT']?></td>
+                    <td><?php echo $requestData['PATIENT_NAME']?></td>
+                    <td><?php echo $requestData['HOSPITAL_CONTACT']?></td>
+                    <td>
+                        <button class="view-btn green-button" onclick="doneRequest()">Done</button>
+                        <button class="delete-btn red-button" onclick="deleteRequest(this)">Delete</button>
+                    </td>
+                </tr>
+                <?php $i++;
+            }}?>
         </tbody>
     </table>
 
