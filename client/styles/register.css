@@ -5,6 +5,7 @@ body {
     padding: 0;
     height: 100vh;
     background-image: url(../assets/login-bg.jpg);
+    backdrop-filter: blur(8px);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -26,16 +27,17 @@ form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    width: 500px;
-
+    max-width: 500px;
+    margin: 5px;
 
 }
 
 h2 {
     text-align: center;
-    color: #fff;
+    /*color: #fff;*/
     font-size: 28px;
     font-weight: 600;
+    margin: 0;
 }
 
 label {
@@ -94,5 +96,5 @@ input[type="button"]:hover {
 select{
     width: 100px;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }

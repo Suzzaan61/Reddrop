@@ -25,6 +25,7 @@ require "../model/Admin-data-fetch.php";
     <table>
         <thead>
         <tr>
+            <th>SN.</th>
             <th>Name</th>
             <th>Blood Group</th>
             <th>Last Donation Date</th>
@@ -37,10 +38,12 @@ require "../model/Admin-data-fetch.php";
         <!-- Sample user data -->
         <?php
         if ($userData->num_rows > 0){
+            $i=1;
             while ($row=mysqli_fetch_assoc($userData)){
         ?>
 
                 <tr>
+                    <td><?php echo $i?></td>
                     <td><?php echo $row['name'] ?></td>
                     <td><?php echo $row['bloodtype'] ?></td>
                     <td><?php echo $row['last_donation_date']?></td>
@@ -53,45 +56,73 @@ require "../model/Admin-data-fetch.php";
                 </tr>
 
                 <?php
-            }
+            $i++;}
         }
         ?>
-        <tr>
-            <td>Suzan Ghimire</td>
-            <td>O+</td>
-            <td>2023-01-15</td>
-            <td>981009999</td>
-            <td class="btn-group">
-                <button class="button" onclick="openPopup('editUserPopup')">Edit</button>
-                <button class="button">Delete</button>
-            </td>
-
-        </tr>
-        <tr>
-            <td>Suzan Ghimire</td>
-            <td>O+</td>
-            <td>2023-01-15</td>
-            <td>981009999</td>
-            <td class="btn-group">
-                <button class="button" onclick="editUser(1, 'Suzan Ghimire', 'O+', '2023-01-15')">Edit</button>
-                <button class="button">Delete</button>
-            </td>
-
-        </tr>
-        <tr>
-            <td>Suzan Ghimire</td>
-            <td>O+</td>
-            <td>2023-01-15</td>
-            <td>981009999</td>
-            <td class="btn-group">
-                <button class="button" onclick="editUser(1, 'Suzan Ghimire', 'O+', '2023-01-15')">Edit</button>
-                <button class="button">Delete</button>
-            </td>
-        </tr>
 
         <!-- Add more user rows as needed -->
         </tbody>
     </table>
+
+    <div class="page-info">
+        <?php
+        if(!isset($_GET['page-nr'])){
+            $page = 1;
+        }else{
+            $page = $_GET['page-nr'];
+        }
+        ?>
+        Showing  <?php echo $page ?> of <?php echo $pages; ?> pages
+    </div>
+
+    <div class="pagination">
+        <a href="?page-nr=1">First</a>
+
+        <!-- Go to the previous page -->
+        <?php
+        if(isset($_GET['page-nr']) && $_GET['page-nr'] > 1){
+            ?> <a href="?page-nr=<?php echo $_GET['page-nr'] - 1 ?>">Previous</a> <?php
+        }else{
+            ?> <a>Previous</a>	<?php
+        }
+        ?>
+
+        <!-- Output the page numbers -->
+        <div class="page-numbers">
+            <?php
+            if(!isset($_GET['page-nr'])){
+                ?> <a class="active" href="?page-nr=1">1</a> <?php
+                $count_from = 2;
+            }else{
+                $count_from = 1;
+            }
+            ?>
+
+            <?php
+            for ($num = $count_from; $num <= $pages; $num++) {
+                if($num == @$_GET['page-nr']) {
+                    ?> <a class="active" href="?page-nr=<?php echo $num ?>"><?php echo $num ?></a> <?php
+                }else{
+                    ?> <a href="?page-nr=<?php echo $num ?>"><?php echo $num ?></a> <?php
+                }
+            }
+            ?>
+        </div>
+
+        <!-- Go to the next page -->
+        <?php
+        if(isset($_GET['page-nr'])){
+            if($_GET['page-nr'] >= $pages){
+                ?> <a>Next</a> <?php
+            }else{
+                ?> <a href="?page-nr=<?php echo $_GET['page-nr'] + 1 ?>">Next</a> <?php
+            }
+        }else{
+            ?> <a href="?page-nr=2">Next</a> <?php
+        }
+        ?>
+        <a href="?page-nr=<?php echo $pages;?>">Last</a>
+    </div>
 
     <div class="popup-container" id="addUserPopup">
         <div class="popup-content">

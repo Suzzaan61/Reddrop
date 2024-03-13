@@ -16,6 +16,9 @@
 
 <body>
     <div class="login-container">
+        <div class="logo-login">
+            <img src="../assets/logo.webp" alt="logo" width="100">
+        </div>
         <h2>Login</h2>
         <p class="wrong-pass" id="wrong-pass" hidden>wrong password, Try again.</p>
         <p class="successfully-register" id="successfully-register" hidden>Successfully register, Please login.</p>

@@ -13,12 +13,13 @@
 
 <body>
     <div class="container">
-        <h2>User Registration</h2>
-       
         <div class="registration-form">
-            
 
             <form action="../controller/process_registration.php" method="post">
+                <div class="logo-login">
+                    <img src="../assets/logo.webp" alt="logo" width="100">
+                </div>
+                <h2>User Registration</h2>
             <p class="failed" id="failed" >Failed to register, Try again.</p>
 
                 <label for="name">Name:</label>

@@ -7,6 +7,8 @@ body {
     justify-content: center;
     height: 100vh;
     background: #f4f4f4 url(../assets/login-bg.jpg);
+    /*background-color: #BF3131;*/
+    backdrop-filter: blur(8px);
 }
 
 .login-container {
