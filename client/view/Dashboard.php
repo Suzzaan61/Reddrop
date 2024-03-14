@@ -104,40 +104,42 @@ if (isset($_SESSION['userId']) >= 0 && !isset($_GET['successful'])) {
                     <h1 class=" main-title">Events</h1>
                 </div>
                 <div class="event-cards flex-item-center">
-                    <div class="cards">
-                        <img src="../assets/event.png" alt="">
-                        <div class="event-title">Blood donation Event</div>
-                        <div class="event-date">2080/05/04</div>
-                        <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
-                    </div>
-                    <div class="cards"><img src="../assets/event.png" alt="">
-                        <div class="event-title">Blood donation Event</div>
-                        <div class="event-date">2080/05/04</div>
-                        <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
-                    </div>
-                    <div class="cards"><img src="../assets/event.png" alt="">
-                        <div class="event-title">Blood donation Event</div>
-                        <div class="event-date">2080/05/04</div>
-                        <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
-                    </div>
-                    <div class="cards"><img src="../assets/event.png" alt="">
-                        <div class="event-title">Blood donation Event</div>
-                        <div class="event-date">2080/05/04</div>
-                        <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
-                    </div>
-                    <div class="cards"><img src="../assets/event.png" alt="">
-                        <div class="event-title">Blood donation Event</div>
-                        <div class="event-date">2080/05/04</div>
-                        <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
-                    </div>
-                    <div class="cards"><img src="../assets/event.png" alt="">
-                        <div class="event-title">Blood donation Event</div>
-                        <div class="event-date">2080/05/04</div>
-                        <div class="learn-more flex-item-between"><button class="button-main">Learn More</button> <button class="button-main">Location</button></div>
-                    </div>
+                    <div class="event-cards flex-item-center">
+                        <?php
+                        require "../model/events-fetch.php";
+                        if($done->num_rows>0){
+                            while ($row=$done->fetch_assoc()) {
+                                ?>
+                                <div class="cards">
+                                    <img src="<?php echo $row['E_BANNER']?>" alt="Event Poster" class="event-image">
+                                    <div class="event-title"><?php echo $row['E_TITLE']?></div>
+                                    <div class="event-date"><?php echo $row['E_DATE']?></div>
+                                    <div class="learn-more flex-item-between">
+                                        <button class="button-main" onclick="showPopup('<?php echo $row['E_BANNER']?>', '<?php echo $row['E_TITLE']?>', '<?php echo $row['E_DATE']?>', '10 AM', '<?php echo $row['E_ADDRESS']?>', '<?php echo $row['E_DESC']?>')">Learn More</button>
+                                        <a target="_blank" href="<?php echo $row['E_LOCATION']?>"><button class="button-main">Location</button></a>
+                                    </div>
+
+                                </div>
+
+                                <?php
+                            }
+                        }
+                        ?>
                 </div>
                 <div class="more-event flex-item-center">
-                    <button class="button-main">More Events</button>
+                    <a href="./Events.php"><button class="button-main">More Events</button></a>
+                </div>
+            </div>
+        </div>
+            <!-- Popup for More Details -->
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <div id="bannerImg"></div>
+                    <h2 id="popup-event-name"></h2>
+                    <p id="popup-event-time"></p>
+                    <p id="popup-event-location"></p>
+                    <p id="popup-event-desc"></p>
+                    <span class="close-btn" onclick="hidePopup()">&times</span>
                 </div>
             </div>
         </div>
@@ -194,6 +196,26 @@ if (isset($_SESSION['userId']) >= 0 && !isset($_GET['successful'])) {
             <p>Copyright © 2024 Red Drop, Org.</p>
         </div>
     </body>
+
+    <script>
+        function showPopup(bannerUrl, name, date, time, location, details) {
+            document.getElementById("bannerImg").setAttribute('style', `background-image: url(\'${bannerUrl}\')`);
+            // document.getElementById("bannerImg").style.backgroundImage = `url(${bannerUrl})`;
+            // document.getElementById("bannerImg").style.backgroundImage = `url(${bannerUrl})`
+            // document.getElementById('bannerImg').setAttribute('src', bannerUrl);
+            document.getElementById("popup-event-name").textContent = name;
+            document.getElementById("popup-event-time").textContent =`Time: ${date}`;
+            document.getElementById("popup-event-location").textContent =`Location: ${location}`;
+            document.getElementById("popup-event-desc").textContent =`Description: ${details}`;
+
+            //document.getElementById("popup-event-details").textContent = `Date: ${date}\n Time: ${time}\nLocation: ${location}\n\n${details}`;
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
 
     </html>
 </body>

@@ -12,21 +12,14 @@
             text-align: center;
             margin-top: 30px;
         }
-        .ficon, .fnav{
+       .fnav{
             margin-bottom: 10px;
         }
         .bnav{
             border-right: 2px solid #f4f4f4;
             padding: 2px 5px;
         }
-        .ficon i{
-            width: 20px;
-            cursor: pointer;
-        }
-        .ficon i:hover{
-            color: #B91216;
-        }
-        .ficon, .fnav{
+        .fnav{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -40,13 +33,6 @@
 <body >
     <footer class="footer-body">
         <div>
-            <div class="ficon"> <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-dribbble"></i>
-                <i class="fa-brands fa-linkedin-in"></i>
-                <i class="fa-brands fa-tiktok"></i>
-                <i class="fa-brands fa-twitter"></i>
-            </div>
             <div class="fnav">
                 <span><a href="#" class="bnav">About Us</a></span>
                 <span><a href="#" class="bnav">Contact Us</a></span>

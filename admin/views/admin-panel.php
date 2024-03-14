@@ -39,6 +39,7 @@ if (!isset($_SESSION['adminId'])) {
     <iframe name="contentFrame" src="./admin-dashboard.php"></iframe>
 </div>
 </div>
+<?php require "../views/Footer.php"?>
 
 </body>
 </html>

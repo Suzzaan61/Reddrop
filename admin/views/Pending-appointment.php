@@ -43,7 +43,7 @@ if (!isset($_SESSION['adminId'])) {
                     <td><?php echo $donationData['bloodtype']?></td>
                     <td><?php echo $donationData['CONTACT_NUMBER']?></td>
                     <td><?php echo $donationData['D_NAME']?></td>
-                    <td><?php  echo date($donationData['LAST_BOOKED_TIME'])?></td>
+                    <td><?php  echo date($donationData['DONATION_DATE'])?></td>
                     <td>
                         <button class="view-btn" onclick="viewAppointment(this)">View</button>
                         <button class="delete-btn" onclick="deleteAppointment(this)">Delete</button>

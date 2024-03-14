@@ -65,6 +65,7 @@ iframe {
 h1, h2 {
     color: #fff;
 }
+
 @media (max-width: 600px) {
     body{
        overflow: scroll;

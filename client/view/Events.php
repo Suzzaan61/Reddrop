@@ -22,141 +22,123 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require "../view/LoggedNav.php"; ?>
 </head>
 <body>
-<div class="container">
+<section class="container">
 
 
 <h1>Blood Donation Events</h1>
 
 <div class="event-container">
-    <!-- Sample Event Cards (Repeat this block for each event) -->
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 1</h2>
-            <p class="event-date-time">Date: January 1, 2023<br>Time: 10:00 AM - 3:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 1', 'January 1, 2023', '10:00 AM - 3:00 PM', 'Location 1', 'Details for Event 1')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 1', 'January 1, 2023', '10:00 AM - 3:00 PM', 'Location 1', 'Details for Event 1')">More Details</button>
+
+    <?php
+    require "../model/events-fetch.php";
+    if($done->num_rows>0){
+        while ($row=$done->fetch_assoc()) {
+            ?>
+            <div class="event-card">
+                <img src="<?php echo $row['E_BANNER']?>" alt="Event Poster" class="event-image">
+                <div class="event-details">
+                    <h2><?php echo $row['E_TITLE']?></h2>
+                    <p class="event-date-time"><?php echo $row['E_DATE']?></p>
+                    <p class="event-date-time"><?php echo $row['E_ADDRESS']?></p>
+                    <div class="button-container">
+                        <a target="_blank" href="<?php echo $row['E_LOCATION']?>"><button class="button">Location</button></a>
+                        <button class="button" onclick="showPopup('<?php echo $row['E_BANNER']?>', '<?php echo $row['E_TITLE']?>', '<?php echo $row['E_DATE']?>', '10 AM', '<?php echo $row['E_ADDRESS']?>', '<?php echo $row['E_DESC']?>')">More Details</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Repeat the above event card block for each event -->
-
-    <div class="event-card">
-        <img src="../assets/event.png" alt="Event Poster" class="event-image">
-        <div class="event-details">
-            <h2>Event Name 2</h2>
-            <p class="event-date-time">Date: February 15, 2023<br>Time: 2:00 PM - 6:00 PM</p>
-            <div class="button-container">
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">Location</button>
-                <button class="button" onclick="showPopup('Event Name 2', 'February 15, 2023', '2:00 PM - 6:00 PM', 'Location 2', 'Details for Event 2')">More Details</button>
-            </div>
-        </div>
-    </div>
-
-
-
+            <?php
+        }
+    }
+    ?>
 </div>
 
-<!-- Popup for More Details -->
+    <div class="page-info">
+        <?php
+        if(!isset($_GET['page-nr'])){
+            $page = 1;
+        }else{
+            $page = $_GET['page-nr'];
+        }
+        ?>
+        Showing  <?php echo $page ?> of <?php echo $pages; ?> pages
+    </div>
+
+    <div class="pagination">
+        <a href="?page-nr=1">First</a>
+
+        <!-- Go to the previous page -->
+        <?php
+        if(isset($_GET['page-nr']) && $_GET['page-nr'] > 1){
+            ?> <a href="?page-nr=<?php echo $_GET['page-nr'] - 1 ?>">Previous</a> <?php
+        }else{
+            ?> <a>Previous</a>	<?php
+        }
+        ?>
+
+        <!-- Output the page numbers -->
+        <div class="page-numbers">
+            <?php
+            if(!isset($_GET['page-nr'])){
+                ?> <a class="active" href="?page-nr=1">1</a> <?php
+                $count_from = 2;
+            }else{
+                $count_from = 1;
+            }
+            ?>
+
+            <?php
+            for ($num = $count_from; $num <= $pages; $num++) {
+                if($num == @$_GET['page-nr']) {
+                    ?> <a class="active" href="?page-nr=<?php echo $num ?>"><?php echo $num ?></a> <?php
+                }else{
+                    ?> <a href="?page-nr=<?php echo $num ?>"><?php echo $num ?></a> <?php
+                }
+            }
+            ?>
+        </div>
+
+        <!-- Go to the next page -->
+        <?php
+        if(isset($_GET['page-nr'])){
+            if($_GET['page-nr'] >= $pages){
+                ?> <a>Next</a> <?php
+            }else{
+                ?> <a href="?page-nr=<?php echo $_GET['page-nr'] + 1 ?>">Next</a> <?php
+            }
+        }else{
+            ?> <a href="?page-nr=2">Next</a> <?php
+        }
+        ?>
+        <a href="?page-nr=<?php echo $pages;?>">Last</a>
+    </div>
+
+
+    <!-- Popup for More Details -->
 <div id="popup" class="popup">
     <div class="popup-content">
-        <span class="close-btn" onclick="hidePopup()">&times;</span>
+        <div id="bannerImg"></div>
         <h2 id="popup-event-name"></h2>
-        <p id="popup-event-details"></p>
+        <p id="popup-event-time"></p>
+        <p id="popup-event-location"></p>
+        <p id="popup-event-desc"></p>
+        <span class="close-btn" onclick="hidePopup()">&times</span>
     </div>
 </div>
-</div>
+</section>
 
 <script>
-    function showPopup(name, date, time, location, details) {
+    function showPopup(bannerUrl, name, date, time, location, details) {
+        document.getElementById("bannerImg").setAttribute('style', `background-image: url(\'${bannerUrl}\')`);
+        // document.getElementById("bannerImg").style.backgroundImage = `url(${bannerUrl})`;
+        // document.getElementById("bannerImg").style.backgroundImage = `url(${bannerUrl})`
+        // document.getElementById('bannerImg').setAttribute('src', bannerUrl);
         document.getElementById("popup-event-name").textContent = name;
-        document.getElementById("popup-event-details").textContent = `Date: ${date}\nTime: ${time}\nLocation: ${location}\n\n${details}`;
+        document.getElementById("popup-event-time").textContent =`Time: ${date}`;
+        document.getElementById("popup-event-location").textContent =`Location: ${location}`;
+        document.getElementById("popup-event-desc").textContent =`Description: ${details}`;
+
+        //document.getElementById("popup-event-details").textContent = `Date: ${date}\n Time: ${time}\nLocation: ${location}\n\n${details}`;
         document.getElementById("popup").style.display = "flex";
     }
 

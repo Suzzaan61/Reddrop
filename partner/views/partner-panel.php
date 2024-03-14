@@ -26,10 +26,8 @@
 <div id="sidePanel">
     <h1>Admin Panel</h1>
     <ul>
-        <a href="./client-dashboard.php" target="contentFrame"><li><i class="fa-duotone fa-gauge"></i> Dashboard</li></a>
         <a href="./Pending-appointment.php" target="contentFrame"> <li><i class="fa-duotone fa-calendar-check"></i> Pending Appointments</li></a>
-        <a href="./Donation-center.php" target="contentFrame"><li><i class="fa-duotone fa-hospitals"></i> Donation Center</li></a>
-        <a href="./Stock.php"><li><i class="fa-duotone fa-store"></i>Store</li></a>
+        <a href="./get-help.php" target="contentFrame"><li><i class="fa-duotone fa-handshake-angle"></i> Get Help</li></a>
     </ul>
 </div>
 
@@ -37,6 +35,8 @@
     <iframe name="contentFrame" src="./client-dashboard.php"></iframe>
 </div>
 </div>
+<?php require "../views/Footer.php"?>
 
 </body>
 </html>
+

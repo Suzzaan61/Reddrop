@@ -21,7 +21,7 @@ if(isset($_GET['page-nr'])) {
     $start = $page * $rows_per_page;
 }
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users limit $pages, $rows_per_page";
 $userData = $conn->query($sql);
 //if ($userData->num_rows > 0){
 //    while ($row=mysqli_fetch_assoc($userData)){

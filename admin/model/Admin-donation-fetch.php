@@ -24,7 +24,7 @@ if(isset($_GET['page-nr'])){
 
 
 $sql =" SELECT *
-        FROM `donation` AS d INNER JOIN `users` AS u ON d.`USER` = u.`userId` INNER JOIN donationcenter AS d2 ON d.DONATION_CENTER = d2.D_ID LIMIT $start, $rows_per_page";
+        FROM `donation` AS d  INNER JOIN `users` AS u ON d.`USER` = u.`userId` INNER JOIN donationcenter AS d2 ON d.DONATION_CENTER = d2.D_ID LIMIT $start, $rows_per_page";
 
 $done = $conn->query($sql);
 
