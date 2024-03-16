@@ -16,12 +16,32 @@ if (!isset($_SESSION['adminId'])) {
 </head>
 <body>
 
+
+
 <div id="BloodRequest">
+    <?php if (isset($_GET['delete']) && $_GET['delete']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Successfully Deleted.</div>
+    <?php }?>
+    <?php if (isset($_GET['delete']) && $_GET['delete']  == '0') { ?>
+        <div  id="myPopup" style="color: red">Failed to delete</div>
+    <?php }?>
+    <?php if (isset($_GET['done']) && $_GET['done']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Updated Successfully</div>
+    <?php }?>
+    <?php if (isset($_GET['done']) && $_GET['done']  == '0') { ?>
+        <div  id="myPopup" style="color: red">Failed to Update</div>
+    <?php }?>
 
     <h2>Blood Request Management</h2>
 
+
     <div class="search-container">
         <input type="text" id="searchFilter" placeholder="Search">
+    </div>
+
+    <div class="button-fulfill">
+        <button >Fulfilled Request</button>
+        <button >Rejected Request</button>
     </div>
 
     <table id="requestTable">
@@ -57,8 +77,14 @@ if (!isset($_SESSION['adminId'])) {
                     <td><?php echo $requestData['PATIENT_NAME']?></td>
                     <td><?php echo $requestData['HOSPITAL_CONTACT']?></td>
                     <td>
-                        <button class="view-btn green-button" onclick="doneRequest()">Done</button>
-                        <button class="delete-btn red-button" onclick="deleteRequest(this)">Delete</button>
+                        <form action="../controller/BloodRequestHandel/done-request_data.php" method="post">
+                            <input type="hidden" name="ID" value="<?php echo $requestData['R_ID']?>">
+                            <button type="submit" class="view-btn green-button">Done</button>
+                        </form>
+                        <form action="../controller/BloodRequestHandel/delete-request_data.php" method="post">
+                            <input type="hidden" name="ID" value="<?php echo $requestData['R_ID']?>">
+                            <button type="submit" class="delete-btn red-button">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <?php $i++;

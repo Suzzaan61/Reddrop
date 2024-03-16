@@ -17,10 +17,22 @@ require "../model/Admin-data-fetch.php";
 <body>
 
 <div id="userManagement">
-<div class="top">
-    <h2>User Management</h2>
-    <button class="button" type="submit" name="addUser" onclick="openPopup('addUserPopup')">Add User</button>
-</div>
+    <?php if (isset($_GET['delete']) && $_GET['delete']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Successfully Deleted.</div>
+    <?php }?>
+    <?php if (isset($_GET['delete']) && $_GET['delete']  == '0') { ?>
+        <div  id="myPopup" style="color: red">Failed to delete</div>
+    <?php }?>
+    <?php if (isset($_GET['edit']) && $_GET['edit']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Updated Successfully</div>
+    <?php }?>
+    <?php if (isset($_GET['edit']) && $_GET['edit']  == '0') { ?>
+        <div  id="myPopup" style="color: red">Failed to Update</div>
+    <?php }?>
+    <div class="top">
+        <h2>User Management</h2>
+        <button class="button" type="submit" name="addUser" onclick="openPopup('addUserPopup')">Add User</button>
+    </div>
 
     <table>
         <thead>
@@ -40,7 +52,7 @@ require "../model/Admin-data-fetch.php";
         if ($userData->num_rows > 0){
             $i=1;
             while ($row=mysqli_fetch_assoc($userData)){
-        ?>
+                ?>
 
                 <tr>
                     <td><?php echo $i?></td>
@@ -50,13 +62,16 @@ require "../model/Admin-data-fetch.php";
                     <td><?php echo $row['contactNumber']?></td>
                     <td class="btn-group">
                         <button class="button" onclick="openPopup('editUserPopup')">Edit</button>
-                        <button class="button">Delete</button>
+                        <form action="../controller/UserHandel/delete-user.php" method="post">
+                            <input type="hidden" name="ID" value="<?php echo $row['userId']?>">
+                            <button type="submit" class="button">Delete</button>
+                        </form>
                     </td>
 
                 </tr>
 
                 <?php
-            $i++;}
+                $i++;}
         }
         ?>
 
@@ -170,7 +185,7 @@ require "../model/Admin-data-fetch.php";
         <div class="popup-content">
             <div id="editUserModal">
                 <h2>Edit User</h2>
-                <form method="post" action="#">
+                <form action="../controller/UserHandel/edit-user.php" method="post">
                     <input type="hidden" id="editUserId" name="userId">
                     <div class="form-group">
                         <label for="editUserName">Name:</label>
@@ -205,7 +220,9 @@ require "../model/Admin-data-fetch.php";
                         <input type="date" id="editUserLastDonationDate" name="updatedLastDonationDate" required>
                     </div>
 
-                    <button class="button" type="submit" name="updateUser">Update User</button>
+                        <button class="button" type="submit" name="updateUser">Update User</button>
+                    </form>
+
                     <button class="close-btn" onclick="closePopup('editUserPopup')">Close</button>
                 </form>
             </div>
