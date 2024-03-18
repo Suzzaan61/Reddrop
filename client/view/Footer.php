@@ -1,45 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-solid.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-regular.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/sharp-light.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Example</title>
     <style>
-        footer.footer-body{
+        /* Styling for the footer */
+        footer {
+            background-color: #fff9ee;
+            color: black;
             text-align: center;
-            margin-top: 30px;
+            padding: 20px 0;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
         }
-       .fnav{
-            margin-bottom: 10px;
-        }
-        .bnav{
-            border-right: 2px solid #f4f4f4;
-            padding: 2px 5px;
-        }
-        .fnav{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
     </style>
-
 </head>
+<body>
 
-<body >
-    <footer class="footer-body">
-        <div>
-            <div class="fnav">
-                <span><a href="#" class="bnav">About Us</a></span>
-                <span><a href="#" class="bnav">Contact Us</a></span>
-                <span><a href="#">Home</a></span>
-            </div>
-        </div>
-    </footer>
+<footer>
+    &copy; 2024 Blood Donation Center
+</footer>
+
 </body>
-
 </html>

@@ -37,6 +37,10 @@ body {
     background-color: #B91216;
 
 }
+.status-icon i{
+    color: #B91216;
+    font-size: 20px;
+}
 
 h2 {
     color: #B91216;

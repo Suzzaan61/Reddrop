@@ -1,7 +1,7 @@
 <?php
 require "../php-config/connection.php";
 
-$records = $conn->query("SELECT * FROM requests WHERE status = 'untrack' order by REQUEST_DATE asc");
+$records = $conn->query("SELECT * FROM requests WHERE status = 'done' order by REQUEST_DATE desc ");
 
 $nr_of_rows = $records->num_rows;
 
@@ -24,7 +24,8 @@ if(isset($_GET['page-nr'])){
 $sql ="SELECT * 
 FROM requests r 
 INNER JOIN users u ON r.USER_ID = u.userId 
-WHERE r.status = 'untrack' 
+WHERE r.status = 'done' 
 ORDER BY REQUEST_DATE 
 LIMIT $start, $rows_per_page;";
+
 $done = $conn->query($sql);

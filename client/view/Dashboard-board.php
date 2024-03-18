@@ -85,6 +85,7 @@ if (!isset($_SESSION['userid'])) {
             </div>
         </div>
     </div>
+<?php require "../view/Footer.php"?>
 <script>
    const hidePopup = () =>{
        let popup = document.getElementById('popup');

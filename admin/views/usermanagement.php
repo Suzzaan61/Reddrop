@@ -61,11 +61,13 @@ require "../model/Admin-data-fetch.php";
                     <td><?php echo $row['last_donation_date']?></td>
                     <td><?php echo $row['contactNumber']?></td>
                     <td class="btn-group">
+
                         <button class="button" onclick="openPopup('editUserPopup')">Edit</button>
                         <form action="../controller/UserHandel/delete-user.php" method="post">
                             <input type="hidden" name="ID" value="<?php echo $row['userId']?>">
                             <button type="submit" class="button">Delete</button>
                         </form>
+
                     </td>
 
                 </tr>
@@ -168,6 +170,20 @@ require "../model/Admin-data-fetch.php";
                         <input type="text" id="newUserAddress" name="newUserAddress" required>
                     </div>
 
+                    <div class="form-group">
+                        <label for="newUserEmail">Email:</label>
+                        <input type="text" id="newUserEmail" name="newUserEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newUserPassword">Password:</label>
+                        <input type="password" id="newUserPassword" name="newUserPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newUserContactNumber">Contact Number:</label>
+                        <input type="text" id="newUserContactNumber" name="newUserContactNumber" required>
+                    </div>
 
                     <div class="form-group">
                         <label for="newUserLastDonationDate">Last Donation Date:</label>
@@ -193,12 +209,8 @@ require "../model/Admin-data-fetch.php";
                     </div>
 
                     <div class="form-group">
-                        <label for="editUserBloodGroup">Blood Group:</label>
-                        <input type="text" id="editUserBloodGroup" name="updatedBloodGroup" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="newBloodType">Blood Type:</label>
-                        <select id="newBloodType" name="newBloodType" required>
+                        <label for="editBloodType">Blood Group:</label>
+                        <select id="editBloodType" name="newBloodType" required>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B+">B+</option>
@@ -211,19 +223,34 @@ require "../model/Admin-data-fetch.php";
 
                     </div>
                     <div class="form-group">
-                        <label for="newUserAddress">Address:</label>
-                        <input type="text" id="newUserAddress" name="newUserAddress" required>
+                        <label for="editUserAddress">Address:</label>
+                        <input type="text" id="editUserAddress" name="editUserAddress" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editUserEmail">Email:</label>
+                        <input type="text" id="editUserEmail" name="editUserEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editUserPassword">Password:</label>
+                        <input type="password" id="editUserPassword" name="editUserPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editUserContactNumber">Contact Number:</label>
+                        <input type="text" id="editUserContactNumber" name="editUserContactNumber" required>
                     </div>
 
                     <div class="form-group">
                         <label for="editUserLastDonationDate">Last Donation Date:</label>
                         <input type="date" id="editUserLastDonationDate" name="updatedLastDonationDate" required>
                     </div>
-
+                    <div class="form-group">
                         <button class="button" type="submit" name="updateUser">Update User</button>
-                    </form>
+                        <button class="close-btn" onclick="closePopup('editUserPopup')">Close</button>
+                    </div>
 
-                    <button class="close-btn" onclick="closePopup('editUserPopup')">Close</button>
                 </form>
             </div>
 
@@ -242,6 +269,19 @@ require "../model/Admin-data-fetch.php";
         popup.style.display = 'flex';
     }
 
+    function openEditPopup(mode ,name, bloodGroup, address, email,password, contactNumber, lastDonationDate) {
+        document.getElementById('editName').value = name
+        document.getElementById('editBloodType').value = bloodGroup
+        document.getElementById('editUserAddress').value = address
+        document.getElementById('editUserEmail').value = email
+        document.getElementById('editUserPassword')
+        document.getElementById('editUserContactNumber').value = contactNumber
+        document.getElementById('editUserLastDonationDate').value = lastDonationDate
+
+        const popup = document.getElementById(mode);
+        popup.style.display = 'flex';
+    }
+
     function closePopup(model) {
         const popup = document.getElementById(model);
         popup.style.display = 'none';
@@ -249,6 +289,7 @@ require "../model/Admin-data-fetch.php";
 
     function editUser(id, name, bloodGroup, lastDonationDate) {
         // Example: Open popup with user data pre-filled for editing
+
         openPopup('editUserPopup');
 
         // You can fill the form fields with the provided user data

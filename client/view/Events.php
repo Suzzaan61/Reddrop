@@ -126,6 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 </section>
+<?php require "../view/Footer.php"?>
 
 <script>
     function showPopup(bannerUrl, name, date, time, location, details) {

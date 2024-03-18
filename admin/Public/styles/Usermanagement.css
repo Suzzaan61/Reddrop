@@ -92,7 +92,7 @@ td.btn-group{
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    width: 100px;
+    width: 130px;
     text-align: center;
     transition: background-color 0.3s;
 }
@@ -121,6 +121,7 @@ select{
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .popup-content {
@@ -128,6 +129,8 @@ select{
     padding: 20px;
     border-radius: 8px;
     width: 400px;
+max-height: 80vh;
+    overflow: scroll;
     /*height: 520px;*/
 }
 #editUserModal .popup-content{

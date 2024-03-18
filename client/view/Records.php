@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </div>
 
-
+<?php require "../view/Footer.php"?>
 <script>
     function filterTable() {
         let input, year, filter, table, tr, td, i, txtValue;
@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         printWindow.document.write('</body></html>');
         printWindow.document.close();
         printWindow.print();
-
+        window.location.replace("");
     }
     // function printTable() {
     //     var printWindow = window.open('', '_blank');
