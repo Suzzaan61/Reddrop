@@ -12,7 +12,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
-    max-width: 800px;
+    /*max-width: 800px;*/
     margin: auto;
 }
 
@@ -80,6 +80,7 @@ h2 {
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
@@ -90,6 +91,18 @@ h2 {
     padding: 20px;
     border-radius: 8px;
     text-align: left;
+    max-height: 70%;
+    overflow: scroll;
+    z-index: 999;
+}
+
+.form-btn-container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 label {
@@ -144,17 +157,19 @@ button:active{
 .pagination a{
     font-size: 14px;
     text-decoration: none;
-    color: black;
-    border: 2px solid darkgray;
+    /*border: 2px solid darkgray;*/
+    border: 2px solid #B91216;
     width: 40px;
     /*height: 30px;*/
-    padding: 8px;
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .pagination a:hover{
     border: 2px solid #B91216;
+    background-color: rgba(185, 18, 22, 0.25);
 }
 
 .pagination .page-numbers{
@@ -164,4 +179,8 @@ button:active{
 .active{
     background-color: #B91216;
     color: white;
+}
+
+#eventEditBannerImg{
+    width: 200px;
 }

@@ -16,6 +16,30 @@ if (!isset($_SESSION['adminId'])) {
 <body>
 
 <div id="events">
+    <?php if (isset($_GET['type']) && $_GET['type']  == '0') { ?>
+
+        <div  id="myPopup" style="color: red">Accepts only type "jpg", "jpeg", "png", "gif" </div>
+    <?php }?>
+    <?php if (isset($_GET['fake']) && $_GET['fake']  == '0') { ?>
+
+        <div  id="myPopup" style="color: red">Failed to check image (please, select another image)</div>
+    <?php }?>
+    <?php if (isset($_GET['size']) && $_GET['size']  == '0') {  ?>
+
+        <div  id="myPopup" style="color: red">image size must be smaller than 2mb </div>
+    <?php }?>
+    <?php if (isset($_GET['done']) && $_GET['done']  == '0') { ?>
+        <div  id="myPopup" style="color: red">Failed to Add a Event</div>
+    <?php }?>
+    <?php if (isset($_GET['done']) && $_GET['done']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Event added Successfully</div>
+    <?php }?>
+    <?php if (isset($_GET['edit']) && $_GET['edit']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Event Updated Successfully</div>
+    <?php }?>
+    <?php if (isset($_GET['delete']) && $_GET['delete']  == '1') { ?>
+        <div  id="myPopup" style="color: green">Event Deleted Successfully</div>
+    <?php }?>
 
     <h2>Blood Donation Events</h2>
     <button class="add-events-btn" onclick="addEventPopup()">Add Events</button>
@@ -24,22 +48,28 @@ if (!isset($_SESSION['adminId'])) {
         <!-- event card -->
         <?php
         require "../model/Admin-events-fetch.php";
-            if($done->num_rows>0){
-               while ($row=$done->fetch_assoc()) {
-?>                      <div class="event-card">
-                       <img src="<?php echo $row['E_BANNER']?>" alt="Event Banner">
-                       <div class="event-details">
-                           <div class="event-title"><?php echo $row['E_TITLE']?></div>
-                           <div class="event-date"><?php echo $row['E_DATE']?></div>
-                           <div class="event-date"><?php echo $row['E_ADDRESS']?></div>
-                           <button class="edit-btn" onclick="editEvent(this)">Edit</button>
-                           <button class="delete-btn" onclick="deleteEvent(this)">Delete</button>
-                       </div>
-                   </div>
+        if($done->num_rows>0){
+            while ($row=$done->fetch_assoc()) {
+                ?>                      <div class="event-card">
+                    <img src="<?php echo $row['E_BANNER']?>" alt="Event Banner">
+                    <div class="event-details">
+                        <div class="event-title"><?php echo $row['E_TITLE']?></div>
+                        <div class="event-date"><?php echo $row['E_DATE']?></div>
+                        <div class="event-date"><?php echo $row['E_ADDRESS']?></div>
+                        <div class="form-btn-container">
+                            <button class="edit-btn" onclick="editEvent('<?php echo $row['E_TITLE']?>','<?php echo $row['E_DATE']?>','<?php echo $row['E_LOCATION']?>', '<?php echo $row['E_ADDRESS']?>','<?php echo $row['E_BANNER']?>', '<?php echo $row['E_DESC']?>','<?php echo $row['E_ID']?>')">Edit</button>
+                            <form action="../controller/delete-event.php" method="post">
+                                <input type="hidden" name="deleteEventId" value="<?php echo $row['E_ID']?>">
+                                <input type="hidden" name="deleteEventImg" value="<?php echo $row['E_BANNER']?>">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
-                   <?php
-               }
+                <?php
             }
+        }
         ?>
         <!-- Add more event cards here -->
     </div>
@@ -102,102 +132,112 @@ if (!isset($_SESSION['adminId'])) {
         ?>
         <a href="?page-nr=<?php echo $pages;?>">Last</a>
 
-    <!-- Event Popup -->
-    <div class="popup" id="eventPopup">
-        <div class="popup-content">
-            <h3>Event Details</h3>
-            <label for="eventTitle">Title:</label>
-            <input type="text" id="eventTitle" name="eventTitle" required>
+        <!-- Event Popup -->
+        <div class="popup" id="eventPopup">
+            <div class="popup-content">
+                <form action="../controller/edit-event.php" method="post" enctype="multipart/form-data">
+                    <h3>Event Details</h3>
+                    <label for="eventEditTitle">Title:</label>
+                    <input type="text" id="eventEditTitle" name="eventTitle" required>
 
-            <label for="eventBanner">Banner Image:</label>
-            <input type="file" id="eventBanner" name="eventBanner" accept="image/*">
+                    <img id="eventEditBannerImg" src="" alt="Banner" >
 
-            <label for="eventDate">Date:</label>
-            <input type="date" id="eventDate" name="eventDate" required>
+                    <label for="eventEditBanner">Select New Banner Image:</label>
+                    <input type="file" id="eventEditBanner" name="eventBanner" accept="image/*">
 
-            <label for="eventLocation">Google Location:</label>
-            <input type="text" id="eventLocation" name="eventLocation" required>
+                    <label for="eventEditDate">Date:</label>
+                    <input type="date" id="eventEditDate" name="eventDate" required>
 
-            <label for="eventAddress">Address:</label>
-            <input type="text" id="eventAddress" name="eventAddress" required>
+                    <label for="eventEditLocation">Google Location:</label>
+                    <input type="text" id="eventEditLocation" name="googleMapLink" required>
 
-            <label for="eventDesc">Descriptions:</label>
-            <input type="text" id="eventDesc" name="eventDesc" required>
+                    <label for="eventEditAddress">Address:</label>
+                    <input type="text" id="eventEditAddress" name="eventAddress" required>
+
+                    <label for="eventEditDesc">Descriptions:</label>
+                    <input type="text" id="eventEditDesc" name="eventDesc" required>
+
+                    <input type="hidden" id="eventId" name="eventId">
+
+                    <button onclick="saveEvent()">Save</button>
+                    <button type="button" class="delete-btn" onclick="closeEventPopup()">Cancel</button>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Event Popup -->
+        <div class="popup" id="addEventPopup">
+            <div class="popup-content">
+                <form action="../controller/add-event.php" method="post" enctype="multipart/form-data">
+                    <h3>Event Details</h3>
+                    <label for="eventTitle">Title:</label>
+                    <input type="text" id="eventTitle" name="eventTitle">
+
+                    <label for="eventBanner">Banner Image:</label>
+                    <input type="file" id="eventBanner" name="eventBanner" accept="image/*">
 
 
-            <button onclick="saveEvent()">Save</button>
-            <button class="delete-btn" onclick="closeEventPopup()">Cancel</button>
+                    <label for="eventDate">Date:</label>
+                    <input type="date" id="eventDate" name="eventDate" >
+
+                    <label for="eventLocation">Google Location:</label>
+                    <input type="text" id="eventLocation" name="googleMapLink">
+
+                    <label for="eventAddress">Address:</label>
+                    <input type="text" id="eventAddress" name="eventAddress" >
+
+                    <label for="eventDesc">Descriptions:</label>
+                    <textarea  id="eventDesc" name="eventDesc" ></textarea>
+
+
+                    <button type="submit">Save</button>
+                    <button type="button" class="delete-btn" onclick="closeEventPopup()">Cancel</button>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- Add Event Popup -->
-    <div class="popup" id="addEventPopup">
-        <div class="popup-content">
-            <form action="../controller/add-event.php" method="post" enctype="multipart/form-data">
-                <h3>Event Details</h3>
-                <label for="eventTitle">Title:</label>
-                <input type="text" id="eventTitle" name="eventTitle" required>
+    <script>
+        let editingEvent;
 
-                <label for="eventBanner">Banner Image:</label>
-                <input type="file" id="eventBanner" name="eventBanner" accept="image/*">
+        function editEvent(title, date, location, address, banner, desc, id) {
+            document.getElementById('eventEditTitle').defaultValue = title;
+            document.getElementById('eventEditDate').defaultValue = date;
+            document.getElementById('eventEditBannerImg').setAttribute('src', `${banner}`);
+            document.getElementById('eventEditLocation').defaultValue = location;
+            document.getElementById('eventEditAddress').defaultValue = address;
+            document.getElementById('eventEditDesc').defaultValue = desc;
+            document.getElementById('eventId').value = id;
 
-                <label for="eventDate">Date:</label>
-                <input type="date" id="eventDate" name="eventDate" required>
-
-                <label for="eventLocation">Google Location:</label>
-                <input type="text" id="eventLocation" name="googleMapLink" required>
-
-                <label for="eventAddress">Address:</label>
-                <input type="text" id="eventAddress" name="eventAddress" required>
-
-                <label for="eventDesc">Descriptions:</label>
-                <input type="text" id="eventDesc" name="eventDesc" required>
+            console.log(title, date, location, address, banner, desc, id);
 
 
-                <button type="submit">Save</button>
-                <button class="delete-btn" onclick="closeEventPopup()">Cancel</button>
-            </form>
-        </div>
-    </div>
-</div>
+            openEventPopup();
+        }
 
-<script>
-    let editingEvent;
+        function deleteEvent(button) {
 
-    function editEvent(button) {
-        editingEvent = button.parentNode.parentNode;
+        }
+        function addEventPopup(){
+            document.getElementById('addEventPopup').style.display = 'flex';
+        }
 
-        const title = editingEvent.querySelector('.event-title').innerText;
-        const date = editingEvent.querySelector('.event-date').innerText;
+        function openEventPopup() {
+            const popup = document.getElementById('eventPopup');
+            popup.style.display = 'flex';
+        }
 
-        document.getElementById('eventTitle').value = title;
-        document.getElementById('eventDate').value = date;
+        function closeEventPopup() {
+            const popup = document.getElementById('eventPopup');
+            const eventPopup = document.getElementById('addEventPopup');
+            popup.style.display = 'none';
+            eventPopup.style.display = 'none';
+        }
 
-        openEventPopup();
-    }
+        function saveEvent() {
 
-    function deleteEvent(button) {
-
-    }
-    function addEventPopup(){
-        document.getElementById('addEventPopup').style.display = 'flex';
-    }
-
-    function openEventPopup() {
-        const popup = document.getElementById('eventPopup');
-        popup.style.display = 'flex';
-    }
-
-    function closeEventPopup() {
-        const popup = document.getElementById('eventPopup');
-        const eventPopup = document.getElementById('addEventPopup');
-        popup.style.display = 'none';
-        eventPopup.style.display = 'none';
-    }
-
-    function saveEvent() {
-
-    }
-</script>
+        }
+    </script>
 </body>
 </html>
