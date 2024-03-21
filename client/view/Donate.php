@@ -35,11 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--        </div>-->
         <?php
         require "../model/donation-fetch.php";
-//        if ($donationData['LAST_BOOKED_TIME'] !== ''){
+        if ($donationData['LAST_BOOKED_TIME'] !== ''){
             $lastDonationDate = isset($donationData['LAST_BOOKED_TIME']) ? $donationData['LAST_BOOKED_TIME']: 0;
             $currentDate = $currentDate = date('Y-m-d');
             $eligibleDonationDate = isset($lastDonationDate)? date('Y-m-d', strtotime($lastDonationDate . ' + 3 months')): 0;
-//        }
+        }
 
         if (strtotime($currentDate) > strtotime($eligibleDonationDate)) {
         ?>

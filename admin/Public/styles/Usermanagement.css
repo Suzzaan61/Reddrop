@@ -84,7 +84,8 @@ td.btn-group{
     box-sizing: border-box;
 }
 
-.button, .close-btn{
+
+.button{
     background-color: #B91216;
     color: #fff;
     padding: 12px;
@@ -122,6 +123,7 @@ select{
     justify-content: center;
     align-items: center;
     padding: 20px;
+
 }
 
 .popup-content {
@@ -129,10 +131,26 @@ select{
     padding: 20px;
     border-radius: 8px;
     width: 400px;
-max-height: 80vh;
+
+    max-height: 80vh;
     overflow: scroll;
+
+    height: 65vh;
+    position: relative;
+
+
     /*height: 520px;*/
 }
+.close-btn{
+    font-size: 37px;
+    color: #B91216;
+    position: fixed;
+    /*position: absolute;*/
+    z-index: 99;
+    right: 33%;
+    top: 7%;
+}
+
 #editUserModal .popup-content{
     height: 625px;
 }
@@ -152,11 +170,12 @@ max-height: 80vh;
 .pagination a{
     font-size: 14px;
     text-decoration: none;
-    color: black;
-    border: 2px solid darkgray;
+    /*color: black;*/
+    border: 2px solid #B91216;
+    border-radius: 10px;
     width: 40px;
     /*height: 30px;*/
-    padding: 8px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,6 +188,7 @@ max-height: 80vh;
     display: flex;
     gap: 5px;
 }
+
 .active{
     background-color: #B91216;
     color: white;

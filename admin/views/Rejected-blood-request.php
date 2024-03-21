@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../model/Admin-request-fetch.php";
+require "../model/Fulfill-blood-request-fetch.php";
 if (!isset($_SESSION['adminId'])) {
     header("Location: ../../client/view/Home.php");
     exit();
@@ -14,6 +14,7 @@ if (!isset($_SESSION['adminId'])) {
     <title>Blood Request Management</title>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
     <link rel="stylesheet" href="../Public/styles/BloodRequest.css">
+    <link rel="stylesheet" href="../Public/styles/fulfillBloodRequest.css">
 </head>
 <body>
 
@@ -21,16 +22,11 @@ if (!isset($_SESSION['adminId'])) {
 
 <div id="BloodRequest">
 
-    <h2>FULFILLED</h2>
+    <h2>Blood Request Management</h2>
 
 
     <div class="search-container">
         <input type="text" id="searchFilter" placeholder="Search">
-    </div>
-
-    <div class="button-fulfill">
-        <a href="./FulfillBloodRequest.php"><button >Fulfilled Request</button></a>
-        <a href="./Rejected-blood-request.php"><button >Rejected Request</button></a>
     </div>
 
     <table id="requestTable">
@@ -46,12 +42,11 @@ if (!isset($_SESSION['adminId'])) {
             <th>Patient Name</th>
             <th>Patient Contact</th>
             <th>Status</th>
-            <th>Action</th>
         </tr>
         </thead>
         <tbody>
 
-        <?php require "../model/Admin-request-fetch.php";
+        <?php require "../model/Rejected-blood-request.php";
         if ($done->num_rows >= 0){
             $i = 1;
 
@@ -66,36 +61,10 @@ if (!isset($_SESSION['adminId'])) {
                     <td><?php echo $requestData['HOSPITAL_CONTACT']?></td>
                     <td><?php echo $requestData['PATIENT_NAME']?></td>
                     <td><?php echo $requestData['HOSPITAL_CONTACT']?></td>
-                    <td><?php  if ($requestData['status'] == 'done'){
-                            ?>
-                            <i
-                                    style=" color: green;
-                                    font-size: 20px;"
-                            <i class="fa-duotone fa-badge-check"></i>
-                            <?php
-                        } else{
-                        ?>
-                            <i
-                                    style=" color: #B91216;
-                                    font-size: 20px;"
-                                    class="fa-duotone fa-hourglass-clock"></i>
-                        <?php
-                        }?> </td>
-                    <td>
-                        <form action="../controller/BloodRequestHandel/done-request_data.php" method="post">
-                            <input type="hidden" name="ID" value="<?php echo $requestData['R_ID']?>">
-                            <button type="submit" class="view-btn green-button">Done</button>
-                        </form>
-                        <form action="../controller/BloodRequestHandel/delete-request_data.php" method="post">
-                            <input type="hidden" name="ID" value="<?php echo $requestData['R_ID']?>">
-                            <button type="submit" class="delete-btn red-button">Delete</button>
-                        </form>
-                    </td>
+                    <td><?php  echo '<i style=" color: red; font-size: 20px;"<i class="fa-duotone fa-circle-xmark"></i>'?> </td>
                 </tr>
                 <?php $i++;
-            }} else {
-                echo "No data Found";
-        }?>
+            }}?>
         </tbody>
     </table>
     <div class="page-info">
@@ -156,16 +125,9 @@ if (!isset($_SESSION['adminId'])) {
         }
         ?>
         <a href="?page-nr=<?php echo $pages;?>">Last</a>
-
-        <div class="popup-container" id="cancellationPopup">
-            <div class="popup-content">
-                <h3>Provide Remarks for Cancellation</h3>
-                <textarea id="remarks" rows="4" cols="50" placeholder="Enter remarks"></textarea>
-                <button class="close-btn" onclick="closeCancellationPopup()">Submit</button>
-            </div>
-        </div>
-
     </div>
+    <br>
+    <button class="button-main" onclick="history.back()">Back</button>
 
     <script>
         function markAsDone(name) {
@@ -219,3 +181,4 @@ if (!isset($_SESSION['adminId'])) {
 
 </body>
 </html>
+

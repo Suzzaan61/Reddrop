@@ -5,6 +5,7 @@ if (!isset($_SESSION['adminId'])) {
     exit();
 }
 require "../model/Admin-data-fetch.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +13,13 @@ require "../model/Admin-data-fetch.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css">
     <link rel="stylesheet" href="../Public/styles/Usermanagement.css">
 </head>
 <body>
 
 <div id="userManagement">
+
     <?php if (isset($_GET['delete']) && $_GET['delete']  == '1') { ?>
         <div  id="myPopup" style="color: green">Successfully Deleted.</div>
     <?php }?>
@@ -28,6 +31,13 @@ require "../model/Admin-data-fetch.php";
     <?php }?>
     <?php if (isset($_GET['edit']) && $_GET['edit']  == '0') { ?>
         <div  id="myPopup" style="color: red">Failed to Update</div>
+    <?php }?>
+    <?php if (isset($_GET['edit']) && $_GET['add']  == '1') {  echo "hello";?>
+
+        <div  id="myPopup" style="color: green">A user added Successfully</div>
+    <?php }?>
+    <?php if (isset($_GET['edit']) && $_GET['add']  == '0') { ?>
+        <div  id="myPopup" style="color: red">Failed to Add a user</div>
     <?php }?>
     <div class="top">
         <h2>User Management</h2>
@@ -145,9 +155,9 @@ require "../model/Admin-data-fetch.php";
         <div class="popup-content">
             <div class="add-user-form">
                 <h2>Add User</h2>
-                <form method="post" action="#">
+                <form method="post" action="../controller/UserHandel/add-user.php">
                     <div class="form-group">
-                        <label for="newUserName">Name:</label>
+                        <label for="newUserName">Full Name:</label>
                         <input type="text" id="newUserName" name="newUserName" required>
                     </div>
 
@@ -190,10 +200,9 @@ require "../model/Admin-data-fetch.php";
                         <input type="date" id="newUserLastDonationDate" name="newUserLastDonationDate" required>
                     </div>
                     <button class="button" type="submit" name="addUser">Add User</button>
-                    <button class="close-btn" onclick="closePopup('addUserPopup')">Close</button>
+                    <button class="button" type="button" onclick="closePopup('addUserPopup')" >Cancel</button>
                 </form>
             </div>
-
         </div>
     </div>
 
@@ -248,11 +257,13 @@ require "../model/Admin-data-fetch.php";
                     </div>
                     <div class="form-group">
                         <button class="button" type="submit" name="updateUser">Update User</button>
-                        <button class="close-btn" onclick="closePopup('editUserPopup')">Close</button>
+                        <button class="button" type="button" onclick="closePopup('editUserPopup')" >Cancel</button>
+
                     </div>
 
                 </form>
             </div>
+<!--            <i class=" close-btn fa-duotone fa-circle-xmark" onclick="closePopup('editUserPopup')"></i>-->
 
         </div>
     </div>

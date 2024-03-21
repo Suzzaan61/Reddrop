@@ -19,8 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $registered = $conn -> query($sql);
     if($registered){
         header("Location: ../view/login.php?done=1");
+        exit();
     }else{
         header("Location: ../view/login.php?failed=1");
+        exit();
     }
 } else {
     
