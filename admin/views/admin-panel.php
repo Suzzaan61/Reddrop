@@ -28,6 +28,7 @@ if (!isset($_SESSION['adminId'])) {
         <a href="./admin-dashboard.php" target="contentFrame"><li><i class="fa-duotone fa-gauge"></i> Dashboard</li></a>
         <a href="./Blood-request.php" target="contentFrame"><li><i class="fa-duotone fa-truck-droplet"></i> Bloods Request</li></a>
         <a href="./usermanagement.php" target="contentFrame"> <li><i class="fa-duotone fa-user"></i> User Management</li></a>
+        <a href="./AdminManagement.php" target="contentFrame"> <li><i class="fa-duotone fa-user-tie"></i> Admin Management</li></a>
         <a href="./Donation-center.php" target="contentFrame"><li><i class="fa-duotone fa-hospitals"></i> Donation Center</li></a>
         <a href="./Pending-appointment.php" target="contentFrame"> <li><i class="fa-duotone fa-calendar-check"></i> Pending Appointments</li></a>
         <a href="./Events.php" target="contentFrame"><li><i class="fa-duotone fa-calendar-days"></i> Events Management</li></a>

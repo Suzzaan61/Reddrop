@@ -18,8 +18,11 @@ if (!isset($_SESSION['adminId'])) {
     <a href="#" id="logo"><img src="../Public/Images/logo.webp" alt="" width="150"></a>
 
     <div id="profile">
+        <?php
+            require "../model/Admin-admin-fetch.php";
+        ?>
         <img src="../Public/Images/Profile.jpg" alt="Profile Photo" id="profilePhoto">
-        <span>John Doe</span>
+        <span><?php echo $row['A_NAME']?></span>
         <a href="../../client/controller/logout.php">
             <button id="logout">Logout</button>
         </a>
